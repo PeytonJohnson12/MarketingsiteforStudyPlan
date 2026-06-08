@@ -1,0 +1,90 @@
+import { ArrowRight } from "lucide-react";
+import { SectionHeading } from "./SectionHeading";
+import { Reveal } from "@/components/ui/reveal";
+import { OrbitRings } from "@/components/Decor";
+
+const MESSY = [
+  { course: "CS 350", note: "PSet 4 — due ?", tone: "danger" },
+  { course: "WRIT 220", note: "Essay draft — due ?", tone: "muted" },
+  { course: "MATH 210", note: "Quiz — overdue", tone: "danger" },
+  { course: "BIO 101", note: "Lab report — due ?", tone: "muted" },
+  { course: "HIST 105", note: "Reading — due ?", tone: "muted" },
+  { course: "CS 350", note: "Discussion — due ?", tone: "warning" },
+];
+
+const CLEAN = [
+  { name: "Problem Set 4", hours: "2h", course: "CS 350", color: "#7c5cf0" },
+  { name: "Essay draft", hours: "1h", course: "WRIT 220", color: "#0ea5e9" },
+  { name: "Quiz 3 review", hours: "1h", course: "CS 350", color: "#7c5cf0" },
+];
+
+export function ProductDemo() {
+  return (
+    <section className="relative overflow-hidden bg-surface/60 py-20 sm:py-28">
+      <OrbitRings className="-left-20 top-10 h-80 w-80 text-accent opacity-[0.14]" />
+      <div className="container-page relative z-10">
+        <SectionHeading
+          eyebrow="The difference"
+          title="Six course pages, or one clear plan"
+          subtitle="Canvas tells you everything at once. StudyPlan tells you what matters now — and what to do about it."
+        />
+
+        <div className="mt-14 grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
+          {/* BEFORE */}
+          <Reveal>
+            <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Before · scattered in Canvas</p>
+              <div className="space-y-2">
+                {MESSY.map((m, i) => (
+                  <div key={i} className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
+                    <span className="text-sm text-muted">{m.course}</span>
+                    <span
+                      className={
+                        "text-xs " +
+                        (m.tone === "danger" ? "text-danger" : m.tone === "warning" ? "text-warning" : "text-faint")
+                      }
+                    >
+                      {m.note}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-center text-xs italic text-faint">&ldquo;…where do I even start?&rdquo;</p>
+            </div>
+          </Reveal>
+
+          {/* arrow */}
+          <Reveal delay={0.1} className="mx-auto hidden lg:block">
+            <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-on shadow-md">
+              <ArrowRight className="h-5 w-5" />
+            </span>
+          </Reveal>
+
+          {/* AFTER */}
+          <Reveal delay={0.15}>
+            <div className="rounded-2xl border border-accent-ring/50 bg-surface p-5 shadow-md ring-1 ring-accent-ring/30">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent">After · your StudyPlan</p>
+              <div className="flex items-center justify-between rounded-lg bg-accent-soft/50 px-3 py-2.5">
+                <span className="text-sm font-semibold text-ink">Today · 4h planned</span>
+                <span className="rounded-full bg-success-soft px-2 py-0.5 text-xs font-medium text-success">On track</span>
+              </div>
+              <div className="mt-2 space-y-2">
+                {CLEAN.map((c) => (
+                  <div key={c.name} className="flex items-center gap-2.5 rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
+                    <span className="rounded-md bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-accent">{c.hours}</span>
+                    <span className="text-sm text-ink">{c.name}</span>
+                    <span className="ml-auto flex items-center gap-1.5 text-[11px] text-muted">
+                      <span className="h-1.5 w-1.5 rounded-full" style={{ background: c.color }} />
+                      {c.course}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-center text-xs text-muted">Clear, ordered, deadline-safe.</p>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+}

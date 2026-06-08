@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === FLOWBOARD DESIGN TOKENS (extracted from the product app) ===
+   RGB channel triplets so Tailwind can inject alpha via rgb(var(--x) / a). */
+:root {
+  color-scheme: light;
+
+  --bg: 247 246 244;          /* warm off-white #f7f6f4 */
+  --surface: 255 255 255;
+  --surface-soft: 244 244 245;
+  --ink: 22 22 25;            /* #161619 */
+  --muted: 78 78 87;          /* #4e4e57 */
+  --faint: 142 142 152;       /* #8e8e98 */
+  --line: 214 214 218;        /* #d6d6da */
+  --line-subtle: 232 232 234; /* #e8e8ea */
+
+  --accent: 124 92 240;       /* #7c5cf0 */
+  --accent-hover: 106 71 224; /* #6a47e0 */
+  --accent-soft: 243 240 255; /* #f3f0ff */
+  --accent-ring: 176 155 255; /* #b09bff */
+  --on-accent: 255 255 255;
+
+  --success: 47 158 107;      --success-soft: 216 240 227;
+  --warning: 217 148 35;      --warning-soft: 248 234 203;
+  --danger: 214 69 61;        --danger-soft: 246 220 218;
+
+  --sidebar: 22 22 25;
+
+  --shadow-sm: 0 1px 2px rgba(22, 22, 25, 0.05);
+  --shadow-md: 0 6px 18px rgba(22, 22, 25, 0.07);
+  --shadow-lg: 0 18px 48px rgba(22, 22, 25, 0.10);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: 22 22 25;
+  --surface: 35 35 40;
+  --surface-soft: 54 54 61;
+  --ink: 244 244 245;
+  --muted: 184 184 191;
+  --faint: 107 107 117;
+  --line: 54 54 61;
+  --line-subtle: 35 35 40;
+  --accent: 145 113 247;
+  --accent-hover: 176 155 255;
+  --accent-soft: 51 33 110;
+  --accent-ring: 88 54 194;
+  --on-accent: 22 22 25;
+  --success: 70 183 131;      --success-soft: 28 58 45;
+  --warning: 230 169 69;      --warning-soft: 58 47 23;
+  --danger: 232 100 93;       --danger-soft: 58 34 32;
+  --sidebar: 35 35 40;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.55);
+}
+
+* { border-color: rgb(var(--line)); }
+
+body {
+  @apply bg-canvas text-ink antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Page-wide ambient: soft violet glows + a whisper of the hero's dot grid, so
+     every section shares the hero's atmosphere. The hero's own opaque glow paints
+     over this within its box, so the hero is unchanged. */
+  background-image:
+    radial-gradient(40rem 28rem at 88% 26%, rgb(var(--accent) / 0.05), transparent 60%),
+    radial-gradient(36rem 26rem at 6% 52%, rgb(var(--accent) / 0.045), transparent 60%),
+    radial-gradient(40rem 28rem at 94% 80%, rgb(var(--accent) / 0.04), transparent 60%),
+    radial-gradient(rgb(var(--ink) / 0.02) 1px, transparent 1px);
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat;
+  background-size: auto, auto, auto, 24px 24px;
+}
+
+html { scroll-behavior: smooth; }
+
+@layer components {
+  /* Section container */
+  .container-page { @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8; }
+  /* Eyebrow / kicker label */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-line-subtle bg-surface
+           px-3 py-1 text-xs font-medium text-muted shadow-card;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Soft violet ambient glow behind the hero. */
+  .hero-glow {
+    background:
+      radial-gradient(48rem 32rem at 50% -8%, rgb(var(--accent) / 0.14), transparent 60%),
+      radial-gradient(40rem 28rem at 12% 8%, rgb(var(--accent) / 0.08), transparent 55%),
+      radial-gradient(40rem 28rem at 92% 4%, rgb(var(--success) / 0.06), transparent 55%);
+  }
+  /* Faint dotted grid texture. */
+  .grid-texture {
+    background-image: radial-gradient(rgb(var(--ink) / 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  /* Animated accent gradient text. */
+  .text-gradient {
+    background: linear-gradient(100deg, rgb(var(--ink)) 0%, rgb(var(--accent)) 55%, rgb(var(--ink)) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    @apply animate-gradient-pan;
+  }
+}
+
+/* Respect reduced-motion: kill all our motion. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
