@@ -7,7 +7,7 @@ const POINTS = [
   { icon: ShieldCheck, title: "Deadline-safe by design", body: "Our scheduler is built so a due assignment can never be left out of your plan — guaranteed, not best-effort." },
   { icon: Lock, title: "Your data stays yours", body: "We pull only your coursework to build your plan. We never sell your data or post anything to Canvas." },
   { icon: EyeOff, title: "Read-only access", body: "StudyPlan reads your assignments and due dates. It can't submit, delete, or change anything in Canvas." },
-  { icon: RefreshCw, title: "Always in sync", body: "A quick refresh keeps your plan current with Canvas — new assignments show up the moment you sync." },
+  { icon: RefreshCw, title: "Updates when you refresh", body: "Your plan updates when you refresh — a quick sync pulls in new assignments and due-date changes from Canvas." },
 ];
 
 export function Security() {

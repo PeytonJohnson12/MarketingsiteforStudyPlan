@@ -1,15 +1,118 @@
-import { ShieldCheck, ListChecks, Clock, AlertTriangle, CheckCircle2, Zap } from "lucide-react";
+import { ShieldCheck, ListChecks, RefreshCw, CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/ui/reveal";
 import { Blobs, Constellation } from "@/components/Decor";
 
-const FEATURES = [
-  { icon: ShieldCheck, title: "Never miss what's due", body: "Every in-window assignment is guaranteed a place in your plan — nothing quietly slips through. That's the whole promise." },
-  { icon: ListChecks, title: "Today, already decided", body: "Open the app and the most urgent work is at the top. No staring at a list wondering where to begin." },
-  { icon: Clock, title: "Fits your real life", body: "Tell StudyPlan how many hours you have. It packs your work to fit — busy days and light days included." },
-  { icon: AlertTriangle, title: "See what's slipping", body: "Anything that won't fit before its deadline gets flagged early, while you still have time to act." },
-  { icon: CheckCircle2, title: "Watch progress add up", body: "Submitted work moves to Completed automatically from Canvas — momentum you can actually see." },
-  { icon: Zap, title: "Zero upkeep", body: "It syncs from Canvas for you. No manual to-do lists, no re-entering deadlines, no maintenance." },
+/* ---------- small token-styled product snippets ---------- */
+
+// Row 1 — every in-window assignment gets a place
+function CompletenessVisual() {
+  const items = [
+    { name: "Problem Set 4", course: "CS 350", color: "#7c5cf0" },
+    { name: "Essay draft", course: "WRIT 220", color: "#0ea5e9" },
+    { name: "Quiz 3 review", course: "CS 350", color: "#7c5cf0" },
+    { name: "Lab report", course: "BIO 101", color: "#2f9e6b" },
+  ];
+  return (
+    <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-xs font-semibold uppercase tracking-wide text-faint">This week</p>
+        <span className="flex items-center gap-1.5 rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-medium text-success">
+          <CheckCircle2 className="h-3.5 w-3.5" /> All placed
+        </span>
+      </div>
+      <div className="space-y-2">
+        {items.map((it) => (
+          <div key={it.name} className="flex items-center gap-2.5 rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
+            <ShieldCheck className="h-4 w-4 text-success" />
+            <span className="text-sm text-ink">{it.name}</span>
+            <span className="ml-auto flex items-center gap-1.5 text-[11px] text-muted">
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: it.color }} />
+              {it.course}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Row 2 — an ordered plan for today
+function TodayVisual() {
+  const today = [
+    { name: "Problem Set 4", hours: "2h", course: "CS 350", color: "#7c5cf0" },
+    { name: "Essay draft", hours: "1h", course: "WRIT 220", color: "#0ea5e9" },
+    { name: "Quiz 3 review", hours: "1h", course: "CS 350", color: "#7c5cf0" },
+  ];
+  return (
+    <div className="rounded-2xl border border-accent-ring/50 bg-surface p-5 shadow-md ring-1 ring-accent-ring/30">
+      <div className="flex items-center justify-between rounded-lg bg-accent-soft/50 px-3 py-2.5">
+        <span className="text-sm font-semibold text-ink">Today · 4h planned</span>
+        <span className="rounded-full bg-success-soft px-2 py-0.5 text-xs font-medium text-success">On track</span>
+      </div>
+      <ol className="mt-3 space-y-2">
+        {today.map((t, i) => (
+          <li key={t.name} className="flex items-center gap-2.5 rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-semibold text-accent-on">{i + 1}</span>
+            <span className="rounded-md bg-accent-soft px-2 py-0.5 text-[11px] font-semibold text-accent">{t.hours}</span>
+            <span className="text-sm text-ink">{t.name}</span>
+            <span className="ml-auto flex items-center gap-1.5 text-[11px] text-muted">
+              <span className="h-1.5 w-1.5 rounded-full" style={{ background: t.color }} />
+              {t.course}
+            </span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+// Row 3 — auto-sync from Canvas
+function SyncVisual() {
+  return (
+    <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
+      <div className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-3">
+        <span className="flex items-center gap-2 text-sm font-medium text-ink">
+          <RefreshCw className="h-4 w-4 text-accent" /> Synced from Canvas
+        </span>
+        <span className="rounded-full bg-success-soft px-2.5 py-0.5 text-xs font-medium text-success">Up to date</span>
+      </div>
+      <div className="mt-3 space-y-2">
+        <div className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-2.5 text-sm">
+          <span className="text-muted">New assignment added</span>
+          <span className="text-[11px] text-faint">just now</span>
+        </div>
+        <div className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-2.5 text-sm">
+          <span className="flex items-center gap-2 text-muted"><CheckCircle2 className="h-4 w-4 text-success" /> Submitted work → Completed</span>
+          <span className="text-[11px] text-faint">auto</span>
+        </div>
+      </div>
+      <p className="mt-3 text-center text-xs text-muted">No manual lists. No re-entering deadlines.</p>
+    </div>
+  );
+}
+
+/* ---------- rows ---------- */
+
+const ROWS = [
+  {
+    icon: ShieldCheck,
+    title: "Never miss what's due",
+    body: "Every in-window assignment is guaranteed a place in your plan — nothing quietly slips through. That's the whole promise.",
+    Visual: CompletenessVisual,
+  },
+  {
+    icon: ListChecks,
+    title: "Today is already decided",
+    body: "Open the app and your work is already ordered, most urgent first. No staring at a list wondering where to begin.",
+    Visual: TodayVisual,
+  },
+  {
+    icon: RefreshCw,
+    title: "Zero upkeep — it syncs itself",
+    body: "StudyPlan pulls your assignments straight from Canvas and keeps them current. Submitted work moves to Completed on its own.",
+    Visual: SyncVisual,
+  },
 ];
 
 export function Features() {
@@ -24,18 +127,27 @@ export function Features() {
           subtitle="Every feature exists to answer a single question faster — what should I work on right now?"
         />
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {FEATURES.map((f, i) => (
-            <Reveal key={f.title} delay={(i % 3) * 0.08}>
-              <div className="group h-full rounded-xl border border-line-subtle bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent transition-transform duration-300 group-hover:scale-110">
-                  <f.icon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-5 text-lg font-semibold text-ink">{f.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{f.body}</p>
+        <div className="mt-16 space-y-16 sm:space-y-24">
+          {ROWS.map(({ icon: Icon, title, body, Visual }, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <div key={title} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+                {/* text */}
+                <Reveal className={reversed ? "lg:order-2" : ""}>
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-5 text-2xl font-semibold tracking-tight text-ink sm:text-3xl">{title}</h3>
+                  <p className="mt-3 max-w-md text-[15px] leading-relaxed text-muted">{body}</p>
+                </Reveal>
+
+                {/* visual */}
+                <Reveal delay={0.1} className={reversed ? "lg:order-1" : ""}>
+                  <Visual />
+                </Reveal>
               </div>
-            </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

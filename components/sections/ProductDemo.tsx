@@ -2,6 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/ui/reveal";
 import { OrbitRings } from "@/components/Decor";
+import { PlanMock } from "@/components/PlanMock";
+import { ButtonLink } from "@/components/ui/button";
+import { site } from "@/lib/site";
 
 const MESSY = [
   { course: "CS 350", note: "PSet 4 — due ?", tone: "danger" },
@@ -29,7 +32,13 @@ export function ProductDemo() {
           subtitle="Canvas tells you everything at once. StudyPlan tells you what matters now — and what to do about it."
         />
 
-        <div className="mt-14 grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
+        {/* The real thing */}
+        <Reveal className="mx-auto mt-14 max-w-2xl">
+          <p className="mb-4 text-center text-xs font-semibold uppercase tracking-wide text-faint">The real thing</p>
+          <PlanMock />
+        </Reveal>
+
+        <div className="mt-12 grid items-center gap-6 lg:grid-cols-[1fr_auto_1fr]">
           {/* BEFORE */}
           <Reveal>
             <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
@@ -84,6 +93,13 @@ export function ProductDemo() {
             </div>
           </Reveal>
         </div>
+
+        <Reveal delay={0.1} className="mt-12 flex justify-center">
+          <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="group">
+            {site.primaryCta}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </ButtonLink>
+        </Reveal>
       </div>
     </section>
   );

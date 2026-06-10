@@ -1,25 +1,27 @@
-import { Counter } from "@/components/ui/reveal";
+import { GraduationCap, Eye, CreditCard } from "lucide-react";
+import { Reveal } from "@/components/ui/reveal";
 
-const STATS = [
-  { to: 2000, suffix: "+", label: "students planning their week" },
-  { to: 50, suffix: "+", label: "campuses represented" },
-  { to: 12000, suffix: "+", label: "deadlines kept on track" },
+const PILLARS = [
+  { icon: GraduationCap, label: "Works with any school on Canvas" },
+  { icon: Eye, label: "Read-only — we never change anything in Canvas" },
+  { icon: CreditCard, label: "Free to start, no credit card" },
 ];
 
 export function TrustBar() {
   return (
-    <section aria-label="Usage at a glance" className="border-y border-line-subtle bg-surface/60">
+    <section aria-label="Why you can trust StudyPlan" className="border-y border-line-subtle bg-surface/60">
       <div className="container-page grid grid-cols-1 gap-6 py-8 sm:grid-cols-3">
-        {STATS.map((s) => (
-          <div key={s.label} className="text-center">
-            <p className="text-3xl font-semibold tracking-tight text-ink">
-              <Counter to={s.to} suffix={s.suffix} />
-            </p>
-            <p className="mt-1 text-sm text-muted">{s.label}</p>
-          </div>
+        {PILLARS.map((p, i) => (
+          <Reveal key={p.label} delay={i * 0.08}>
+            <div className="flex items-center justify-center gap-3 text-center sm:justify-start sm:text-left">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
+                <p.icon className="h-5 w-5" />
+              </span>
+              <p className="text-sm font-medium text-ink">{p.label}</p>
+            </div>
+          </Reveal>
         ))}
       </div>
-      <p className="pb-6 text-center text-xs text-faint">Illustrative figures (sample data)</p>
     </section>
   );
 }

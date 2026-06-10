@@ -6,7 +6,6 @@ const COLUMNS = [
   { title: "Product", links: [
     { label: "How it works", href: "#how-it-works" },
     { label: "Features", href: "#features" },
-    { label: "Results", href: "#results" },
     { label: "FAQ", href: "#faq" },
   ]},
   { title: "Get started", links: [
@@ -40,7 +39,7 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line-subtle pt-6 sm:flex-row">
           <p className="text-sm text-faint">© {new Date().getFullYear()} StudyPlan. All rights reserved.</p>
-          <p className="text-sm text-faint">Made for students juggling Canvas.</p>
+          <p className="text-sm text-faint">Made for students juggling deadlines.</p>
         </div>
       </div>
     </footer>

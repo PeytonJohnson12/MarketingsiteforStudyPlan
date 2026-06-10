@@ -37,15 +37,15 @@ export function FinalCTA() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </ButtonLink>
               <ButtonLink
-                href={site.loginUrl}
+                href="#how-it-works"
                 size="lg"
                 className="border border-white/20 bg-transparent text-white hover:bg-white/10"
               >
-                Log in
+                See how it works
               </ButtonLink>
             </div>
             <p className="mt-5 flex items-center justify-center gap-2 text-sm text-white/60">
-              <ShieldCheck className="h-4 w-4" /> No credit card · Read-only Canvas access · Cancel anytime
+              <ShieldCheck className="h-4 w-4" /> Free to start · No credit card · Read-only Canvas access
             </p>
           </div>
         </div>
