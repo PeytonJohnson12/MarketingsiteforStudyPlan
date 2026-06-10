@@ -1,16 +1,15 @@
-import { GraduationCap, Eye, CreditCard } from "lucide-react";
+import { GraduationCap, CreditCard } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
 const PILLARS = [
   { icon: GraduationCap, label: "Works with any Canvas school" },
-  { icon: Eye, label: "Read-only — we never change your Canvas" },
   { icon: CreditCard, label: "Free to start · No card needed" },
 ];
 
 export function TrustBar() {
   return (
     <section aria-label="Why you can trust StudyPlan" className="border-y border-line-subtle bg-surface/60">
-      <div className="container-page grid grid-cols-1 gap-6 py-8 sm:grid-cols-3">
+      <div className="container-page grid grid-cols-1 gap-6 py-8 sm:grid-cols-2">
         {PILLARS.map((p, i) => (
           <Reveal key={p.label} delay={i * 0.08}>
             <div className="flex items-center justify-center gap-3 text-center sm:justify-start sm:text-left">

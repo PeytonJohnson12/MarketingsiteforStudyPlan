@@ -31,7 +31,7 @@ const TIERS = [
     price: PAID_PRICE,
     blurb: "For students who want more.",
     features: PAID_FEATURES,
-    cta: site.primaryCta,
+    cta: "Level up my grades",
     recommended: true,
   },
 ];

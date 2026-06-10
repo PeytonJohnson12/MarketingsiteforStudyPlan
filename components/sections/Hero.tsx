@@ -32,7 +32,7 @@ export function Hero() {
             variants={item}
             className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
-            Know what to study <span className="text-gradient">today.</span>
+            Never miss what&rsquo;s <span className="text-gradient">due.</span>
           </motion.h1>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted">
@@ -65,11 +65,6 @@ export function Hero() {
         >
           <div className={reduce ? "" : "animate-float"}>
             <PlanMock />
-          </div>
-          <div className="absolute -bottom-4 -left-4 hidden rounded-xl border border-line-subtle bg-surface px-3.5 py-2.5 shadow-md sm:block">
-            <p className="flex items-center gap-2 text-sm font-medium text-ink">
-              <ShieldCheck className="h-4 w-4 text-success" /> Never miss what&rsquo;s due
-            </p>
           </div>
         </motion.div>
       </div>
