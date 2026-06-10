@@ -9,10 +9,10 @@ const PILLARS = [
 export function TrustBar() {
   return (
     <section aria-label="Why you can trust StudyPlan" className="border-y border-line-subtle bg-surface/60">
-      <div className="container-page grid grid-cols-1 gap-6 py-8 sm:grid-cols-2">
+      <div className="container-page flex flex-col items-center justify-center gap-5 py-8 sm:flex-row sm:gap-x-16">
         {PILLARS.map((p, i) => (
           <Reveal key={p.label} delay={i * 0.08}>
-            <div className="flex items-center justify-center gap-3 text-center sm:justify-start sm:text-left">
+            <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-soft text-accent">
                 <p.icon className="h-5 w-5" />
               </span>
