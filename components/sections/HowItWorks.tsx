@@ -6,9 +6,9 @@ import { Constellation, OrbitRings } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 const STEPS = [
-  { icon: Link2, color: "124 92 240", title: "Connect Canvas", body: "Paste your Canvas token once. StudyPlan pulls in every course, assignment, and due date automatically.", time: "~60 seconds" },
-  { icon: SlidersHorizontal, color: "14 165 233", title: "Set your hours", body: "Tell us how many hours you can study each day. That's the only input — no manual to-do lists to maintain.", time: "1 tap" },
-  { icon: CalendarCheck, color: "47 158 107", title: "Get your day", body: "See a deadline-safe plan that never omits what's due, with the most urgent work surfaced first.", time: "Instant" },
+  { icon: Link2, color: "124 92 240", title: "Connect Canvas", body: "Paste one Canvas code. StudyPlan pulls in every class, assignment, and due date.", time: "~60 seconds" },
+  { icon: SlidersHorizontal, color: "14 165 233", title: "Set your hours", body: "Tell us how many hours you can study each day. That's the only thing we need.", time: "1 tap" },
+  { icon: CalendarCheck, color: "47 158 107", title: "Get your day", body: "See a plan that puts everything due in order. The most urgent work shows up first.", time: "Instant" },
 ];
 
 export function HowItWorks() {
@@ -19,8 +19,8 @@ export function HowItWorks() {
       <div className="container-page relative z-10">
         <SectionHeading
           eyebrow="How it works"
-          title="From Canvas chaos to a clear day in three steps"
-          subtitle="No setup marathons. Connect once and StudyPlan does the planning for you — every day."
+          title="From a mess to a clear day in 3 steps"
+          subtitle="No long setup. Connect once. StudyPlan plans the rest for you."
         />
 
       <div className="relative mt-14 grid gap-6 md:grid-cols-3">
@@ -49,7 +49,7 @@ export function HowItWorks() {
       </div>
 
         <Reveal delay={0.2} className="mt-10 flex justify-center">
-          <ButtonLink href={site.signupUrl} variant="primary" size="lg">Start planning free</ButtonLink>
+          <ButtonLink href={site.signupUrl} variant="primary" size="lg">{site.primaryCta}</ButtonLink>
         </Reveal>
       </div>
     </section>

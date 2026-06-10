@@ -6,13 +6,13 @@ import { Constellation } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 const FAQS = [
-  { q: "Is StudyPlan free?", a: "You can get started for free — connect Canvas and build your first plan without a credit card." },
-  { q: "Do I have to share my Canvas password?", a: "No. You paste a read-only Canvas access token you generate yourself. StudyPlan can read your assignments and due dates but can never submit, edit, or delete anything." },
-  { q: "Which schools does it work with?", a: "Any school that uses Canvas. You just enter your school's Canvas web address and your access token." },
-  { q: "How long does setup take?", a: "About a minute. Connect Canvas, set how many hours you can study per day, and your plan is ready." },
-  { q: "Could it ever miss an assignment that's due?", a: "No — that's the core promise. The scheduler is built so every assignment due in your window is always represented in the plan. It's a guarantee, not a best effort." },
-  { q: "Is my data safe?", a: "We only pull the coursework needed to build your plan, we never post to Canvas, and we don't sell your data. Access is read-only." },
-  { q: "Can I change my study hours or planning window?", a: "Anytime. Adjust your hours for a single day or change your defaults in settings — the plan re-balances instantly." },
+  { q: "Is StudyPlan free?", a: "Yes. The free plan covers what most students need. A paid plan adds more (coming soon)." },
+  { q: "Do I have to give you my Canvas password?", a: "No. You paste a read-only Canvas code. We never see or ask for your password." },
+  { q: "Which schools work?", a: "Any school that uses Canvas. If your classes are in Canvas, you're good." },
+  { q: "How long does setup take?", a: "About a minute. Paste your code, set your hours, and your plan is ready." },
+  { q: "Could it ever miss something that's due?", a: "No. Every assignment due in your dates is always in your plan. That's the promise." },
+  { q: "Is my data safe?", a: "Yes. We read only your coursework to build your plan. We never sell it or post to Canvas." },
+  { q: "Can I change my study hours or dates?", a: "Yes. Change your hours or your dates anytime. Your plan updates right away." },
 ];
 
 export function FAQ() {

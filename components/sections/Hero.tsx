@@ -24,7 +24,7 @@ export function Hero() {
         <motion.div variants={container} initial="hidden" animate="show">
           <motion.div variants={item}>
             <span className="eyebrow">
-              <Sparkles className="h-3.5 w-3.5 text-accent" /> For students juggling a dozen deadlines
+              <Sparkles className="h-3.5 w-3.5 text-accent" /> Too much due? We&rsquo;ve got you.
             </span>
           </motion.div>
 
@@ -32,11 +32,11 @@ export function Hero() {
             variants={item}
             className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
-            Never miss another <span className="text-gradient">deadline.</span>
+            Know what to study <span className="text-gradient">today.</span>
           </motion.h1>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted">
-            StudyPlan turns everything you have due into one calm daily plan — synced from Canvas, so nothing slips through.
+            StudyPlan reads Canvas and builds your daily plan. Everything due is always in it.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -48,7 +48,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p variants={item} className="mt-4 flex items-center gap-2 text-sm text-muted">
-            <ShieldCheck className="h-4 w-4 text-success" /> Free to start · Connect Canvas in about a minute · No credit card.
+            <ShieldCheck className="h-4 w-4 text-success" /> Free to start · Set up in about a minute · No card needed.
           </motion.p>
 
           <motion.p variants={item} className="mt-9 text-sm text-muted">
@@ -68,7 +68,7 @@ export function Hero() {
           </div>
           <div className="absolute -bottom-4 -left-4 hidden rounded-xl border border-line-subtle bg-surface px-3.5 py-2.5 shadow-md sm:block">
             <p className="flex items-center gap-2 text-sm font-medium text-ink">
-              <ShieldCheck className="h-4 w-4 text-success" /> Never miss a deadline
+              <ShieldCheck className="h-4 w-4 text-success" /> Never miss what&rsquo;s due
             </p>
           </div>
         </motion.div>

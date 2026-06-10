@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "sw
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "StudyPlan — Never miss another deadline",
+    default: "StudyPlan — Never miss what's due",
     template: "%s · StudyPlan",
   },
   description: site.description,
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     type: "website",
     url: site.url,
     siteName: "StudyPlan",
-    title: "StudyPlan — Never miss another deadline",
+    title: "StudyPlan — Never miss what's due",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "StudyPlan — Never miss another deadline",
+    title: "StudyPlan — Never miss what's due",
     description: site.description,
   },
   robots: { index: true, follow: true },
@@ -46,7 +46,7 @@ const jsonLd = {
   applicationCategory: "EducationalApplication",
   operatingSystem: "Web",
   description:
-    "StudyPlan connects to Canvas and turns scattered assignments into a deadline-safe daily plan for students.",
+    "StudyPlan reads your Canvas assignments and builds one daily plan. See what to do today, and never miss what's due.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   url: site.url,
 };

@@ -26,10 +26,10 @@ export function FinalCTA() {
           <Constellation className="-top-8 right-0 h-72 w-72 text-accent-ring opacity-30" />
           <div className="relative mx-auto max-w-2xl">
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Your clearest week starts in about a minute.
+              Your clearest week is a minute away.
             </h2>
             <p className="mt-4 text-pretty text-lg text-white/70">
-              Connect Canvas, set your hours, and let StudyPlan handle the rest. Free to start.
+              Connect Canvas, set your hours, and let StudyPlan do the rest. Free to start.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="group">
@@ -45,7 +45,7 @@ export function FinalCTA() {
               </ButtonLink>
             </div>
             <p className="mt-5 flex items-center justify-center gap-2 text-sm text-white/60">
-              <ShieldCheck className="h-4 w-4" /> Free to start · No credit card · Read-only Canvas access
+              <ShieldCheck className="h-4 w-4" /> Free to start · No card needed · Read-only
             </p>
           </div>
         </div>

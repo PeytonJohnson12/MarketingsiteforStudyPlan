@@ -28,8 +28,8 @@ export function ProductDemo() {
       <div className="container-page relative z-10">
         <SectionHeading
           eyebrow="The difference"
-          title="Six course pages, or one clear plan"
-          subtitle="Canvas tells you everything at once. StudyPlan tells you what matters now — and what to do about it."
+          title="Six class pages, or one clear plan"
+          subtitle="Canvas dumps it all on you at once. StudyPlan shows what to do now."
         />
 
         {/* The real thing */}
@@ -42,7 +42,7 @@ export function ProductDemo() {
           {/* BEFORE */}
           <Reveal>
             <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Before · scattered in Canvas</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Before · spread across Canvas</p>
               <div className="space-y-2">
                 {MESSY.map((m, i) => (
                   <div key={i} className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
@@ -89,7 +89,7 @@ export function ProductDemo() {
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-center text-xs text-muted">Clear, ordered, deadline-safe.</p>
+              <p className="mt-3 text-center text-xs text-muted">Clear. In order. Nothing left out.</p>
             </div>
           </Reveal>
         </div>

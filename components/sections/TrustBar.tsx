@@ -2,9 +2,9 @@ import { GraduationCap, Eye, CreditCard } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 
 const PILLARS = [
-  { icon: GraduationCap, label: "Works with any school on Canvas" },
-  { icon: Eye, label: "Read-only — we never change anything in Canvas" },
-  { icon: CreditCard, label: "Free to start, no credit card" },
+  { icon: GraduationCap, label: "Works with any Canvas school" },
+  { icon: Eye, label: "Read-only — we never change your Canvas" },
+  { icon: CreditCard, label: "Free to start · No card needed" },
 ];
 
 export function TrustBar() {

@@ -5,7 +5,7 @@ import { Blobs, Constellation } from "@/components/Decor";
 
 /* ---------- small token-styled product snippets ---------- */
 
-// Row 1 — every in-window assignment gets a place
+// Row 1 — every assignment due gets a place in the plan
 function CompletenessVisual() {
   const items = [
     { name: "Problem Set 4", course: "CS 350", color: "#7c5cf0" },
@@ -87,7 +87,7 @@ function SyncVisual() {
           <span className="text-[11px] text-faint">auto</span>
         </div>
       </div>
-      <p className="mt-3 text-center text-xs text-muted">No manual lists. No re-entering deadlines.</p>
+      <p className="mt-3 text-center text-xs text-muted">No lists to keep up. No retyping dates.</p>
     </div>
   );
 }
@@ -97,20 +97,20 @@ function SyncVisual() {
 const ROWS = [
   {
     icon: ShieldCheck,
-    title: "Never miss what's due",
-    body: "Every in-window assignment is guaranteed a place in your plan — nothing quietly slips through. That's the whole promise.",
+    title: "Nothing due gets missed",
+    body: "Every assignment due in your dates is always in your plan. That's our whole promise.",
     Visual: CompletenessVisual,
   },
   {
     icon: ListChecks,
-    title: "Today is already decided",
-    body: "Open the app and your work is already ordered, most urgent first. No staring at a list wondering where to begin.",
+    title: "Today is already sorted",
+    body: "Open the app and your work is in order. The most urgent thing is first.",
     Visual: TodayVisual,
   },
   {
     icon: RefreshCw,
-    title: "Zero upkeep — it syncs itself",
-    body: "StudyPlan pulls your assignments straight from Canvas and keeps them current. Submitted work moves to Completed on its own.",
+    title: "It updates itself",
+    body: "StudyPlan pulls your work from Canvas. Turn something in, and it moves to Done.",
     Visual: SyncVisual,
   },
 ];
@@ -123,8 +123,8 @@ export function Features() {
       <div className="container-page relative z-10">
         <SectionHeading
           eyebrow="Features"
-          title="Built around one job: your next right move"
-          subtitle="Every feature exists to answer a single question faster — what should I work on right now?"
+          title="Always know your next move"
+          subtitle="Everything here answers one question — what do I do now?"
         />
 
         <div className="mt-16 space-y-16 sm:space-y-24">
