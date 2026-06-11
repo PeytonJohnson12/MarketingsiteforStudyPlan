@@ -6,9 +6,9 @@ import { Constellation, OrbitRings } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 const STEPS = [
-  { icon: Link2, color: "124 92 240", title: "Connect Canvas", body: "Paste one Canvas code. StudyPlan pulls in every class, assignment, and due date.", time: "~60 seconds" },
-  { icon: SlidersHorizontal, color: "14 165 233", title: "Set your hours", body: "Tell us how many hours you can study each day. That's the only thing we need.", time: "1 tap" },
-  { icon: CalendarCheck, color: "47 158 107", title: "Get your day", body: "See a plan that puts everything due in order. The most urgent work shows up first.", time: "Instant" },
+  { icon: Link2, color: "124 92 240", title: "Connect Canvas", body: "Paste one code. We pull in every due date.", time: "~60 seconds" },
+  { icon: SlidersHorizontal, color: "14 165 233", title: "Set your hours", body: "Tell us your daily study hours. That's it.", time: "1 tap" },
+  { icon: CalendarCheck, color: "47 158 107", title: "Get your day", body: "Get an ordered plan — most urgent first.", time: "Instant" },
 ];
 
 export function HowItWorks() {

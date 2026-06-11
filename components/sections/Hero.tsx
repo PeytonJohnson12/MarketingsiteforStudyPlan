@@ -36,7 +36,7 @@ export function Hero() {
           </motion.h1>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted">
-            StudyPlan reads Canvas and builds your daily plan. Everything due is always in it.
+            StudyPlan reads your Canvas and turns it into one calm daily plan — so you always know what&rsquo;s actually due.
           </motion.p>
 
           <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">

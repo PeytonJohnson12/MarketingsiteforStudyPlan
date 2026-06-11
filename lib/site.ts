@@ -7,10 +7,10 @@ export const site = {
   signupUrl: "https://pinnavel.com/signup",
   loginUrl: "https://pinnavel.com/login",
   nav: [
-    { label: "How it works", href: "#how-it-works" },
-    { label: "Features", href: "#features" },
-    { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
+    { label: "How it works", href: "/#how-it-works" },
+    { label: "Features", href: "/#features" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "FAQ", href: "/faq" },
   ],
   primaryCta: "Start my free plan",
 } as const;
