@@ -2,13 +2,15 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
+import { Nav } from "@/components/sections/Nav";
+import { Footer } from "@/components/sections/Footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "StudyPlan — Never miss another deadline",
+    default: "StudyPlan — Never miss what's due",
     template: "%s · StudyPlan",
   },
   description: site.description,
@@ -23,12 +25,12 @@ export const metadata: Metadata = {
     type: "website",
     url: site.url,
     siteName: "StudyPlan",
-    title: "StudyPlan — Never miss another deadline",
+    title: "StudyPlan — Never miss what's due",
     description: site.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "StudyPlan — Never miss another deadline",
+    title: "StudyPlan — Never miss what's due",
     description: site.description,
   },
   robots: { index: true, follow: true },
@@ -46,7 +48,7 @@ const jsonLd = {
   applicationCategory: "EducationalApplication",
   operatingSystem: "Web",
   description:
-    "StudyPlan connects to Canvas and turns scattered assignments into a deadline-safe daily plan for students.",
+    "StudyPlan reads your Canvas assignments and builds one daily plan. See what to do today, and never miss what's due.",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   url: site.url,
 };
@@ -61,7 +63,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <Nav />
         {children}
+        <Footer />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>

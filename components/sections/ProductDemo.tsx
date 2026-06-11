@@ -3,17 +3,9 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "@/components/ui/reveal";
 import { OrbitRings } from "@/components/Decor";
 import { PlanMock } from "@/components/PlanMock";
+import { CanvasMock } from "@/components/CanvasMock";
 import { ButtonLink } from "@/components/ui/button";
 import { site } from "@/lib/site";
-
-const MESSY = [
-  { course: "CS 350", note: "PSet 4 — due ?", tone: "danger" },
-  { course: "WRIT 220", note: "Essay draft — due ?", tone: "muted" },
-  { course: "MATH 210", note: "Quiz — overdue", tone: "danger" },
-  { course: "BIO 101", note: "Lab report — due ?", tone: "muted" },
-  { course: "HIST 105", note: "Reading — due ?", tone: "muted" },
-  { course: "CS 350", note: "Discussion — due ?", tone: "warning" },
-];
 
 const CLEAN = [
   { name: "Problem Set 4", hours: "2h", course: "CS 350", color: "#7c5cf0" },
@@ -28,8 +20,8 @@ export function ProductDemo() {
       <div className="container-page relative z-10">
         <SectionHeading
           eyebrow="The difference"
-          title="Six course pages, or one clear plan"
-          subtitle="Canvas tells you everything at once. StudyPlan tells you what matters now — and what to do about it."
+          title="Six class pages, or one clear plan"
+          subtitle="Canvas dumps it all on you at once. StudyPlan shows what to do now."
         />
 
         {/* The real thing */}
@@ -42,22 +34,8 @@ export function ProductDemo() {
           {/* BEFORE */}
           <Reveal>
             <div className="rounded-2xl border border-line-subtle bg-surface p-5 shadow-card">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Before · scattered in Canvas</p>
-              <div className="space-y-2">
-                {MESSY.map((m, i) => (
-                  <div key={i} className="flex items-center justify-between rounded-lg border border-line-subtle bg-canvas px-3 py-2.5">
-                    <span className="text-sm text-muted">{m.course}</span>
-                    <span
-                      className={
-                        "text-xs " +
-                        (m.tone === "danger" ? "text-danger" : m.tone === "warning" ? "text-warning" : "text-faint")
-                      }
-                    >
-                      {m.note}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-faint">Before · spread across Canvas</p>
+              <CanvasMock />
               <p className="mt-3 text-center text-xs italic text-faint">&ldquo;…where do I even start?&rdquo;</p>
             </div>
           </Reveal>
@@ -89,7 +67,7 @@ export function ProductDemo() {
                   </div>
                 ))}
               </div>
-              <p className="mt-3 text-center text-xs text-muted">Clear, ordered, deadline-safe.</p>
+              <p className="mt-3 text-center text-xs text-muted">Clear. In order. Nothing left out.</p>
             </div>
           </Reveal>
         </div>

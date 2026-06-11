@@ -19,8 +19,8 @@ npm start        # serve the build
 ```
 
 ## Highlights
-- Single landing page: nav → hero → trust strip → how-it-works → before/after demo →
-  outcome metrics → features → testimonials → security → FAQ → final CTA → footer.
+- Single landing page: nav → hero → trust strip → before/after demo → features →
+  how-it-works → security → pricing → FAQ → final CTA → footer.
 - Every section ends in a CTA toward signup.
 - Brand extracted from the app's Flowboard tokens (violet `#7c5cf0`, warm canvas, Inter,
   airy shadows) so it feels like a natural extension of the product.
@@ -30,5 +30,7 @@ npm start        # serve the build
   prerendered; semantic landmarks + skip link.
 
 ## Notes
-- Placeholder testimonials and stats are clearly labeled as sample data.
+- Copy is written at a ~grade 5–6 reading level: short sentences, plain words, no jargon.
+- **Pricing is placeholder.** Set the paid tier's name, price, and features at the top of
+  `components/sections/Pricing.tsx` (`PAID_NAME`, `PAID_PRICE`, `PAID_FEATURES`) before publishing.
 - The hero's canvas particle field and the rest of the motion respect reduced-motion.

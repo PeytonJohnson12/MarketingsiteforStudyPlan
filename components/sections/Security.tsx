@@ -4,10 +4,10 @@ import { Reveal } from "@/components/ui/reveal";
 import { Constellation } from "@/components/Decor";
 
 const POINTS = [
-  { icon: ShieldCheck, title: "Deadline-safe by design", body: "Our scheduler is built so a due assignment can never be left out of your plan — guaranteed, not best-effort." },
-  { icon: Lock, title: "Your data stays yours", body: "We pull only your coursework to build your plan. We never sell your data or post anything to Canvas." },
-  { icon: EyeOff, title: "Read-only access", body: "StudyPlan reads your assignments and due dates. It can't submit, delete, or change anything in Canvas." },
-  { icon: RefreshCw, title: "Updates when you refresh", body: "Your plan updates when you refresh — a quick sync pulls in new assignments and due-date changes from Canvas." },
+  { icon: ShieldCheck, title: "Nothing due can be left out", body: "Our planner is built so a due assignment always makes your plan. Every time." },
+  { icon: Lock, title: "Your data stays yours", body: "We read only your coursework to build your plan. We never sell it. We never post to Canvas." },
+  { icon: EyeOff, title: "Read-only access", body: "StudyPlan reads your work and due dates. It can't turn in, delete, or change anything." },
+  { icon: RefreshCw, title: "Fresh when you refresh", body: "Hit refresh and your plan catches up. New work and date changes come in from Canvas." },
 ];
 
 export function Security() {
@@ -17,8 +17,8 @@ export function Security() {
       <div className="container-page relative z-10">
         <SectionHeading
           eyebrow="Trust & safety"
-          title="Built to be dependable"
-          subtitle="The whole point is peace of mind. Here's how StudyPlan earns it."
+          title="Built to be trusted"
+          subtitle="The whole point is peace of mind. Here's how we earn it."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2">
           {POINTS.map((p, i) => (

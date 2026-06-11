@@ -26,7 +26,7 @@ export function Nav() {
       )}
     >
       <nav className="container-page flex h-16 items-center justify-between" aria-label="Primary">
-        <a href="#top" className="rounded-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent-ring/40">
+        <a href="/" className="rounded-lg focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent-ring/40">
           <Logo />
         </a>
 
