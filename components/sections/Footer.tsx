@@ -22,7 +22,7 @@ export function Footer() {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <Logo />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{site.tagline}</p>
+            <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted">{site.catchphrase}</p>
             <ButtonLink href={site.signupUrl} variant="primary" size="sm" className="mt-5">{site.primaryCta}</ButtonLink>
           </div>
           {COLUMNS.map((col) => (

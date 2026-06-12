@@ -54,7 +54,7 @@ const jsonLd = {
       applicationCategory: "EducationalApplication",
       operatingSystem: "Web",
       description:
-        "StudyPlan reads your Canvas assignments and builds one daily plan. See what to do today, and never miss what's due.",
+        "StudyPlan is the Canvas study planner that never misses what's due — it reads your Canvas assignments and builds one calm daily plan.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       url: site.url,
       publisher: { "@id": `${site.url}/#org` },
