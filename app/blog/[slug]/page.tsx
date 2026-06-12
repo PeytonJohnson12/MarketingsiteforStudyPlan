@@ -28,8 +28,33 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const post = getPost(slug);
   if (!post) notFound();
 
+  // BlogPosting + breadcrumb structured data for rich results.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        headline: post.title,
+        description: post.excerpt,
+        datePublished: post.date,
+        url: `${site.url}/blog/${post.slug}`,
+        author: { "@type": "Organization", name: "StudyPlan" },
+        publisher: { "@id": `${site.url}/#org` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: site.url },
+          { "@type": "ListItem", position: 2, name: "Blog", item: `${site.url}/blog` },
+          { "@type": "ListItem", position: 3, name: post.title },
+        ],
+      },
+    ],
+  };
+
   return (
     <main id="main" className="py-20 sm:py-28">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article className="container-page mx-auto max-w-2xl">
         <Link
           href="/blog"

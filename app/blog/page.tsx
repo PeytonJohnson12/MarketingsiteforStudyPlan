@@ -3,8 +3,9 @@ import Link from "next/link";
 import { posts, formatDate } from "@/lib/posts";
 
 export const metadata: Metadata = {
-  title: "Blog",
-  description: "Simple tips for staying on top of Canvas — deadlines, study plans, and a calmer week.",
+  title: "Blog — Canvas tips & study planning",
+  description:
+    "Simple tips for staying on top of Canvas assignments — what's due, study plans, and a calmer week.",
   alternates: { canonical: "/blog" },
 };
 

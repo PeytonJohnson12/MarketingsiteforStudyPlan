@@ -3,7 +3,8 @@ import { Pricing } from "@/components/sections/Pricing";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "StudyPlan pricing — start free, upgrade when you want more.",
+  description:
+    "StudyPlan pricing — the Canvas study planner is free to start, no card needed. Upgrade when you want more.",
   alternates: { canonical: "/pricing" },
 };
 

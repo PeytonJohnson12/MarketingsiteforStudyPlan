@@ -5,11 +5,14 @@ export function SectionHeading({
   title,
   subtitle,
   center = true,
+  as: Heading = "h2",
 }: {
   eyebrow?: string;
   title: React.ReactNode;
   subtitle?: string;
   center?: boolean;
+  /** "h1" on pages where this heading is the page title (SEO heading hierarchy). */
+  as?: "h1" | "h2";
 }) {
   return (
     <div className={center ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
@@ -22,7 +25,7 @@ export function SectionHeading({
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{title}</h2>
+        <Heading className="mt-4 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{title}</Heading>
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>
