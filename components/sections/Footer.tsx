@@ -40,7 +40,10 @@ export function Footer() {
         </div>
         <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-line-subtle pt-6 sm:flex-row">
           <p className="text-sm text-faint">© {new Date().getFullYear()} StudyPlan. All rights reserved.</p>
-          <p className="text-sm text-faint">Made for students juggling deadlines.</p>
+          <div className="flex items-center gap-4 text-sm text-faint">
+            <a href="/terms" className="transition-colors hover:text-ink">Terms</a>
+            <span>Made for students juggling deadlines.</span>
+          </div>
         </div>
       </div>
     </footer>

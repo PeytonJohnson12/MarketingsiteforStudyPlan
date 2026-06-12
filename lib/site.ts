@@ -10,6 +10,7 @@ export const site = {
     { label: "How it works", href: "/#how-it-works" },
     { label: "Features", href: "/#features" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ],
   primaryCta: "Start my free plan",

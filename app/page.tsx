@@ -4,6 +4,7 @@ import { ProductDemo } from "@/components/sections/ProductDemo";
 import { Features } from "@/components/sections/Features";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Security } from "@/components/sections/Security";
+import { EarlyAccess } from "@/components/sections/EarlyAccess";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export default function HomePage() {
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Features />
       <HowItWorks />
       <Security />
+      <EarlyAccess />
       <FinalCTA />
     </main>
   );
