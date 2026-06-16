@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>StudyPlan — Product Demo</title>
+<style>
+  :root{
+    --violet:#7c5cf0; --violet-600:#6a47e0; --violet-50:#f3f0ff; --violet-200:#d9cffb;
+    --ink:#17171b; --muted:#6b6b76; --line:#ece9f5; --surface:#ffffff; --soft:#f7f6fb;
+    --sky:#0ea5e9; --green:#10b981; --orange:#f97316; --danger:#d6453d;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%; background:#0f0e17; overflow:hidden;}
+  body{display:flex; align-items:center; justify-content:center; font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+
+  /* Fixed 16:9 stage, scaled to fit the window */
+  #scaler{position:relative;}
+  .stage{
+    position:relative; width:1280px; height:720px; overflow:hidden;
+    background:
+      radial-gradient(60rem 40rem at 12% -15%, rgba(124,92,240,.14), transparent 60%),
+      radial-gradient(50rem 40rem at 115% 8%, rgba(124,92,240,.10), transparent 55%),
+      #ffffff;
+  }
+
+  /* persistent brand mark */
+  .brand{position:absolute; top:30px; left:34px; display:flex; align-items:center; gap:10px; z-index:40; opacity:0; transition:opacity .4s;}
+  .brand .mark{width:34px;height:34px;border-radius:9px;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;box-shadow:0 6px 16px rgba(124,92,240,.35);}
+  .brand .name{font-weight:700;font-size:19px;color:var(--ink);letter-spacing:-.01em;}
+
+  /* caption */
+  .caption{position:absolute; left:0; right:0; bottom:54px; text-align:center; z-index:50;}
+  .caption span{display:inline-block; font-size:34px; font-weight:700; color:var(--ink); letter-spacing:-.01em;
+    background:rgba(255,255,255,.7); backdrop-filter:blur(4px); padding:8px 22px; border-radius:14px;}
+
+  .layer{position:absolute; inset:0; z-index:10;}
+  .center{display:flex; align-items:center; justify-content:center;}
+
+  /* ---- Scene 1: clutter ---- */
+  .clutter .chip{position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+    box-shadow:0 12px 30px rgba(20,20,40,.10); padding:14px 16px; width:230px;}
+  .chip .t{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:6px;display:flex;gap:7px;align-items:center;}
+  .chip .t .dot{width:9px;height:9px;border-radius:50%;}
+  .chip .l{font-size:12px;color:var(--muted);margin-top:4px;}
+  .chip .due{font-size:11px;font-weight:700;color:var(--danger);margin-top:7px;}
+  @keyframes float1{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(-3deg)}}
+  @keyframes float2{0%,100%{transform:translateY(0) rotate(2.5deg)}50%{transform:translateY(8px) rotate(2.5deg)}}
+  @keyframes float3{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+
+  /* ---- generic app panel ---- */
+  .panel{position:absolute; background:var(--surface); border:1px solid var(--line); border-radius:18px;
+    box-shadow:0 24px 60px rgba(30,20,70,.14);}
+  .btn-violet{background:var(--violet); color:#fff; font-weight:700; font-size:18px; border:none; border-radius:12px; padding:14px 26px; display:inline-flex; align-items:center; gap:10px;}
+  .check{width:22px;height:22px;border-radius:50%;background:#fff;color:var(--violet);display:inline-flex;align-items:center;justify-content:center;font-weight:900;}
+
+  /* cursor */
+  .cursor{position:absolute; z-index:60; width:26px; height:26px; pointer-events:none;}
+  .cursor svg{filter:drop-shadow(0 2px 3px rgba(0,0,0,.3));}
+
+  /* rows (scene 4) */
+  .rowlist{position:absolute; left:340px; top:120px; width:600px;}
+  .arow{display:flex; align-items:center; gap:12px; background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:13px 16px; margin-bottom:11px; box-shadow:0 6px 16px rgba(20,20,40,.05);}
+  .arow .bar{width:5px; height:34px; border-radius:4px; flex:0 0 auto;}
+  .arow .nm{font-size:15px;font-weight:600;color:var(--ink);flex:1;}
+  .arow .ct{font-size:12px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
+  .arow .dd{font-size:13px;font-weight:600;color:var(--muted);}
+
+  /* dashboard (scene 5) */
+  .dash{position:absolute; left:300px; top:96px; width:680px;}
+  .focus{background:var(--violet); color:#fff; border-radius:16px; padding:20px 22px; box-shadow:0 18px 40px rgba(124,92,240,.35); margin-bottom:16px;}
+  .focus .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
+  .focus .big{font-size:24px;font-weight:800;margin-top:7px;}
+  .focus .meta{font-size:13px;opacity:.9;margin-top:8px;}
+  .todo{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 6px;box-shadow:0 10px 24px rgba(20,20,40,.06);}
+  .titem{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line);}
+  .titem:last-child{border-bottom:none;}
+  .titem .num{width:24px;height:24px;border-radius:7px;background:var(--violet-50);color:var(--violet-600);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .titem .nm{flex:1;font-size:14px;color:var(--ink);font-weight:500;}
+  .titem .dd{font-size:12px;color:var(--muted);}
+
+  /* week (scene 6) */
+  .week{position:absolute; left:150px; top:150px; width:980px; display:grid; grid-template-columns:repeat(7,1fr); gap:10px;}
+  .wcol{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:300px;box-shadow:0 6px 16px rgba(20,20,40,.05);}
+  .wcol.today{outline:2px solid var(--violet);background:var(--violet-50);}
+  .wcol .wh{font-size:12px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+  .wcol .wh small{color:var(--violet-600);font-weight:700;}
+  .pill{font-size:11px;color:#fff;border-radius:7px;padding:5px 8px;margin-bottom:6px;font-weight:600;line-height:1.2;}
+
+  /* timeline (scene 7) */
+  .tl{position:absolute; left:150px; top:160px; width:980px; background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(20,20,40,.08);}
+  .tlhead{display:flex;background:var(--soft);border-bottom:1px solid var(--line);}
+  .tlhead .lab{width:150px;padding:10px 14px;font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;}
+  .tlhead .days{flex:1;display:grid;grid-template-columns:repeat(7,1fr);}
+  .tlhead .d{border-left:1px solid var(--line);text-align:center;padding:10px 0;font-size:13px;color:var(--muted);}
+  .tlhead .d.t0{color:var(--violet-600);font-weight:700;}
+  .tlrow{display:flex;border-top:1px solid var(--line);}
+  .tlrow .lab{width:150px;padding:14px;font-size:14px;font-weight:600;color:var(--ink);}
+  .tlrow .track{flex:1;position:relative;height:54px;}
+  .tlbar{position:absolute;height:30px;top:12px;border-radius:7px;color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;padding:0 10px;overflow:hidden;white-space:nowrap;transition:none;}
+
+  /* end cards (8,9) */
+  .endwrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(60rem 40rem at 50% 30%, rgba(124,92,240,.18), transparent 60%), #ffffff;}
+  .endhead{font-size:52px;font-weight:800;color:var(--ink);letter-spacing:-.02em;text-align:center;}
+  .endbrand{display:flex;align-items:center;gap:14px;}
+  .endbrand .mark{width:54px;height:54px;border-radius:14px;background:var(--violet);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;box-shadow:0 12px 30px rgba(124,92,240,.4);}
+  .endbrand .name{font-weight:800;font-size:40px;color:var(--ink);}
+  .startbtn{margin-top:26px;background:var(--violet);color:#fff;font-weight:700;font-size:20px;border-radius:14px;padding:14px 34px;box-shadow:0 14px 34px rgba(124,92,240,.4);}
+</style>
+</head>
+<body>
+<div id="scaler"><div class="stage" id="stage">
+
+  <div class="brand" id="brand"><div class="mark">S</div><div class="name">StudyPlan</div></div>
+
+  <!-- Scene 1: clutter -->
+  <div class="layer clutter" id="s1">
+    <div class="chip" style="left:150px; top:130px; animation:float1 4s ease-in-out infinite;">
+      <div class="t"><span class="dot" style="background:var(--sky)"></span>Canvas — Bio 101</div>
+      <div class="l">Lab report 3</div><div class="due">Due Fri</div>
+    </div>
+    <div class="chip" style="left:470px; top:90px; animation:float2 4.4s ease-in-out infinite;">
+      <div class="t"><span class="dot" style="background:var(--orange)"></span>Email — Professor</div>
+      <div class="l">"Essay draft moved up…"</div><div class="due">Due Wed</div>
+    </div>
+    <div class="chip" style="left:820px; top:150px; animation:float3 3.8s ease-in-out infinite;">
+      <div class="t"><span class="dot" style="background:var(--green)"></span>Lecture slide</div>
+      <div class="l">Midterm next week</div><div class="due">Exam</div>
+    </div>
+    <div class="chip" style="left:300px; top:380px; animation:float2 4.1s ease-in-out infinite;">
+      <div class="t"><span class="dot" style="background:var(--violet)"></span>Syllabus PDF</div>
+      <div class="l">Problem set 7</div><div class="due">Due Tue</div>
+    </div>
+    <div class="chip" style="left:700px; top:400px; animation:float1 4.6s ease-in-out infinite;">
+      <div class="t"><span class="dot" style="background:var(--danger)"></span>Sticky note</div>
+      <div class="l">Quiz 4 — study!!</div><div class="due">Mon</div>
+    </div>
+    <div class="chip" style="left:540px; top:300px; animation:float3 4.2s ease-in-out infinite; transform:rotate(6deg);">
+      <div class="t"><span class="dot" style="background:var(--sky)"></span>Group chat</div>
+      <div class="l">Reading response?</div><div class="due">Due Tue</div>
+    </div>
+  </div>
+
+  <!-- Scene 2 & 3: connect -->
+  <div class="layer center" id="s2">
+    <div class="panel" style="width:520px; padding:46px 40px; text-align:center; position:relative;">
+      <div style="font-size:22px;font-weight:800;color:var(--ink);margin-bottom:6px;">Connect your Canvas</div>
+      <div style="font-size:15px;color:var(--muted);margin-bottom:28px;">We pull in everything you owe — automatically.</div>
+      <button class="btn-violet" id="connectBtn"><span id="connectLabel">Connect Canvas</span></button>
+    </div>
+  </div>
+
+  <!-- Scene 4: rows stream in -->
+  <div class="layer" id="s4">
+    <div class="rowlist" id="rowlist">
+      <div class="arow"><div class="bar" style="background:var(--sky)"></div><div class="nm">Lab report 3</div><div class="ct">Bio 101</div><div class="dd">Fri</div></div>
+      <div class="arow"><div class="bar" style="background:var(--violet)"></div><div class="nm">Quiz 4</div><div class="ct">CS 201</div><div class="dd">Mon</div></div>
+      <div class="arow"><div class="bar" style="background:var(--green)"></div><div class="nm">Problem set 7</div><div class="ct">Calc II</div><div class="dd">Tue</div></div>
+      <div class="arow"><div class="bar" style="background:var(--orange)"></div><div class="nm">Essay draft</div><div class="ct">English</div><div class="dd">Wed</div></div>
+      <div class="arow"><div class="bar" style="background:var(--sky)"></div><div class="nm">Midterm exam</div><div class="ct">Bio 101</div><div class="dd">Thu</div></div>
+    </div>
+  </div>
+
+  <!-- Scene 5: dashboard -->
+  <div class="layer" id="s5">
+    <div class="dash">
+      <div class="focus">
+        <div class="k">Today's focus</div>
+        <div class="big">Quiz 4 — study session</div>
+        <div class="meta">~45 min · due Mon · CS 201</div>
+      </div>
+      <div class="todo">
+        <div class="titem"><div class="num">1</div><div class="nm">Lab report 3 — write first half</div><div class="dd">1h</div></div>
+        <div class="titem"><div class="num">2</div><div class="nm">Problem set 7</div><div class="dd">45m</div></div>
+        <div class="titem"><div class="num">3</div><div class="nm">Reading response</div><div class="dd">30m</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene 6: week -->
+  <div class="layer" id="s6">
+    <div class="week" id="week"></div>
+  </div>
+
+  <!-- Scene 7: timeline -->
+  <div class="layer" id="s7">
+    <div class="tl">
+      <div class="tlhead"><div class="lab">Class</div><div class="days">
+        <div class="d t0">Fri</div><div class="d">Sat</div><div class="d">Sun</div><div class="d">Mon</div><div class="d">Tue</div><div class="d">Wed</div><div class="d">Thu</div>
+      </div></div>
+      <div class="tlrow"><div class="lab">Bio 101</div><div class="track">
+        <div class="tlbar tb" style="left:0%; background:var(--violet);" data-w="28%">Lab report 3</div>
+        <div class="tlbar tb" style="left:42%; background:var(--danger); top:12px;" data-w="42%">Study: Midterm</div>
+      </div></div>
+      <div class="tlrow"><div class="lab">CS 201</div><div class="track">
+        <div class="tlbar tb" style="left:0%; background:var(--sky);" data-w="14%">Study: Quiz 4</div>
+        <div class="tlbar tb" style="left:30%; background:var(--violet);" data-w="55%">Project milestone</div>
+      </div></div>
+      <div class="tlrow"><div class="lab">Calc II</div><div class="track">
+        <div class="tlbar tb" style="left:0%; background:var(--violet);" data-w="28%">Problem set 7</div>
+      </div></div>
+      <div class="tlrow"><div class="lab">English</div><div class="track">
+        <div class="tlbar tb" style="left:14%; background:var(--violet);" data-w="40%">Essay draft</div>
+      </div></div>
+    </div>
+  </div>
+
+  <!-- Scene 8: headline -->
+  <div class="layer" id="s8"><div class="endwrap"><div class="endhead">Never miss<br/>another deadline.</div></div></div>
+
+  <!-- Scene 9: logo + CTA -->
+  <div class="layer" id="s9"><div class="endwrap">
+    <div class="endbrand"><div class="mark">S</div><div class="name">StudyPlan</div></div>
+    <div class="startbtn" id="startBtn">Start free →</div>
+  </div></div>
+
+  <!-- cursor -->
+  <div class="cursor" id="cursor" style="opacity:0">
+    <svg viewBox="0 0 24 24" width="26" height="26"><path d="M4 2l16 8-7 2-2 7-7-19z" fill="#1b1b22" stroke="#fff" stroke-width="1.4"/></svg>
+  </div>
+
+  <!-- caption -->
+  <div class="caption"><span id="cap"></span></div>
+
+</div></div>
+
+<script>
+  const DUR = 22000;
+  const stage = document.getElementById('stage');
+  const layers = { s1:el('s1'), s2:el('s2'), s4:el('s4'), s5:el('s5'), s6:el('s6'), s7:el('s7'), s8:el('s8'), s9:el('s9') };
+  function el(id){return document.getElementById(id);}
+  const clamp=(x,lo=0,hi=1)=>Math.max(lo,Math.min(hi,x));
+  const ease=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+
+  // opacity for a window [a,b] with fade f ms
+  function win(t,a,b,f=400){ if(t<=a-f||t>=b+f)return 0; if(t<a)return clamp((t-(a-f))/f); if(t>b)return clamp(1-(t-b)/f); return 1; }
+
+  // build week scene
+  const wk=[["Mon",""],["Tue",""],["Wed",""],["Thu",""],["Fri","today"],["Sat",""],["Sun",""]];
+  const wkItems={
+    Mon:[["Quiz 4 study","var(--sky)"]],
+    Tue:[["Problem set 7","var(--green)"],["Reading resp.","var(--orange)"]],
+    Wed:[["Essay draft","var(--orange)"]],
+    Thu:[["Midterm study","var(--sky)"]],
+    Fri:[["Lab report 3","var(--violet)"]],
+    Sat:[],Sun:[]
+  };
+  const weekEl=el('week');
+  wk.forEach(([d,cls])=>{
+    const c=document.createElement('div'); c.className='wcol'+(cls?' today':'');
+    c.innerHTML='<div class="wh">'+d+(cls?' <small>TODAY</small>':'')+'</div>';
+    (wkItems[d]||[]).forEach(([nm,col])=>{ const p=document.createElement('div'); p.className='pill'; p.style.background=col; p.textContent=nm; c.appendChild(p); });
+    weekEl.appendChild(c);
+  });
+
+  const captions=[
+    [0,3000,"Your deadlines are everywhere."],
+    [3000,5000,"One click to connect."],
+    [5000,7000,"Connect your Canvas."],
+    [7000,10000,"Every class, pulled in."],
+    [10000,14000,"One calm daily plan."],
+    [14000,17000,"See your whole week."],
+    [17000,19000,"Know when to start."],
+    [19000,21000,"Never miss another deadline."],
+    [21000,22000,"StudyPlan · Start free"],
+  ];
+  const capEl=el('cap');
+
+  function render(t){
+    // layers
+    layers.s1.style.opacity = win(t,0,3000);
+    layers.s2.style.opacity = win(t,3000,7000);          // connect panel spans scenes 2+3
+    layers.s4.style.opacity = win(t,7000,10000);
+    layers.s5.style.opacity = win(t,10000,14000);
+    layers.s6.style.opacity = win(t,14000,17000);
+    layers.s7.style.opacity = win(t,17000,19000);
+    layers.s8.style.opacity = win(t,19000,21000);
+    layers.s9.style.opacity = win(t,21000,22000);
+    el('brand').style.opacity = (t>3200 && t<19000) ? 1 : 0;
+
+    // S1 jitter intensity (stress) — handled by CSS float anims
+
+    // S2/S3 cursor + click
+    const cur=el('cursor');
+    if(t>=3200 && t<=7000){
+      cur.style.opacity=1;
+      const p=clamp((t-3300)/1700); // move during scene 2
+      const x=980-(980-600)*ease(p), y=560-(560-410)*ease(p);
+      cur.style.left=x+'px'; cur.style.top=y+'px';
+      const clicked = t>=5200;
+      el('connectBtn').style.transform = (t>=5100 && t<5400)?'scale(.94)':'scale(1)';
+      el('connectLabel').innerHTML = clicked ? '<span class="check">✓</span> Connected' : 'Connect Canvas';
+      el('connectBtn').style.boxShadow = (t>=5100&&t<6200)?'0 0 0 10px rgba(124,92,240,.18)':'none';
+    } else { cur.style.opacity=0; el('connectLabel').innerHTML='Connect Canvas'; el('connectBtn').style.boxShadow='none'; }
+
+    // S4 rows reveal
+    const rows=document.querySelectorAll('#rowlist .arow');
+    rows.forEach((r,i)=>{ const start=7100+i*430; const p=clamp((t-start)/360); r.style.opacity=p; r.style.transform='translateY('+(1-ease(p))*16+'px)'; });
+
+    // S5 dashboard rise
+    const dash=document.querySelector('#s5 .dash');
+    if(dash){ const p=clamp((t-10100)/600); dash.style.transform='translateY('+(1-ease(p))*22+'px)'; dash.style.opacity=p; }
+
+    // S6 week columns stagger
+    document.querySelectorAll('#week .wcol').forEach((c,i)=>{ const p=clamp((t-14100-i*70)/300); c.style.opacity=p; c.style.transform='translateY('+(1-ease(p))*14+'px)'; });
+
+    // S7 bars draw
+    const dp=clamp((t-17150)/1500);
+    document.querySelectorAll('#s7 .tb').forEach((b)=>{ const target=parseFloat(b.dataset.w); b.style.width=(target*ease(dp))+'%'; });
+
+    // S8 headline rise
+    const h=document.querySelector('#s8 .endhead'); if(h){ const p=clamp((t-19100)/700); h.style.opacity=p; h.style.transform='translateY('+(1-ease(p))*20+'px)'; }
+    // S9 cta pulse
+    const sb=el('startBtn'); if(sb){ const p=clamp((t-21100)/400); sb.style.transform='scale('+(0.9+0.1*ease(p))+')'; }
+
+    // caption cross-fade
+    let active=captions[captions.length-1];
+    for(const c of captions){ if(t>=c[0]&&t<c[1]){active=c;break;} }
+    const a0=active[0];
+    const o = clamp(Math.min((t-a0)/300, (active[1]-t)/300, 1));
+    capEl.textContent=active[2]; capEl.parentElement.style.opacity = clamp(o,0,1);
+  }
+
+  function fit(){ const s=Math.min(window.innerWidth/1280, window.innerHeight/720); document.getElementById('scaler').style.transform='scale('+s+')'; }
+  window.addEventListener('resize',fit); fit();
+
+  // static frame mode for capture: ?t=ms
+  const qs=new URLSearchParams(location.search);
+  if(qs.has('t')){ render(parseInt(qs.get('t'),10)||0); }
+  else { const start=performance.now(); (function loop(now){ render((now-start)%DUR); requestAnimationFrame(loop); })(performance.now()); }
+</script>
+</body>
+</html>
