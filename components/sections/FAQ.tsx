@@ -31,7 +31,7 @@ export function FAQ() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Constellation className="-top-8 right-0 h-72 w-72 text-accent opacity-[0.2] lg:right-12" />
       <div className="container-page relative z-10">
-      <SectionHeading eyebrow="FAQ" title="Questions, answered" />
+      <SectionHeading as="h1" eyebrow="FAQ" title="Questions, answered" />
 
       <Reveal className="mx-auto mt-10 max-w-2xl">
         <Accordion type="single" collapsible className="rounded-xl border border-line-subtle bg-surface px-6 shadow-card">

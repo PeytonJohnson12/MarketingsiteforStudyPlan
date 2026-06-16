@@ -42,6 +42,7 @@ export function Pricing() {
       <Constellation className="-top-8 left-0 h-72 w-72 text-accent opacity-[0.18] lg:left-10" />
       <div className="container-page relative z-10">
         <SectionHeading
+          as="h1"
           eyebrow="Pricing"
           title="Simple pricing"
           subtitle="Start free. Upgrade when you want more."

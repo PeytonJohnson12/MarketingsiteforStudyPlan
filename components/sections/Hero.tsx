@@ -32,7 +32,7 @@ export function Hero() {
             variants={item}
             className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
-            Never miss what&rsquo;s <span className="text-gradient">due.</span>
+            Know what&rsquo;s due. Ace what&rsquo;s <span className="text-gradient">next.</span>
           </motion.h1>
 
           <motion.p variants={item} className="mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted">

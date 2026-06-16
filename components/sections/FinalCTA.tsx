@@ -29,7 +29,7 @@ export function FinalCTA() {
               Your clearest week is a minute away.
             </h2>
             <p className="mt-4 text-pretty text-lg text-white/70">
-              Connect Canvas, set your hours, and let StudyPlan do the rest. Free to start.
+              Connect Canvas, set your hours — the Canvas study planner that never misses what&rsquo;s due.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
               <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="group">
