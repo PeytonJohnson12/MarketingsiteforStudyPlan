@@ -42,19 +42,19 @@ export function EarlyAccess() {
       <div className="container-page relative z-10">
         <div className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">
-            <Sparkles className="h-3.5 w-3.5 text-accent" /> Founding circle
+            <Sparkles className="h-3.5 w-3.5 text-accent" /> Free study plan
           </span>
           <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Be a founding user.
+            Get a free study plan.
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted">
-            Join the founding circle: early access to new features, a real say in what we build, and a founding-user badge.
+            Drop your email and we&rsquo;ll send you a ready-to-use weekly study plan — free. Plus you&rsquo;re first in line when Navo opens.
           </p>
 
           {status === "success" ? (
             <Reveal className="mx-auto mt-8 flex max-w-md items-center justify-center gap-2.5 rounded-xl border border-success/30 bg-success-soft/50 px-5 py-4">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-success" />
-              <p className="text-sm font-medium text-ink">You&rsquo;re in! Check your email to confirm your spot.</p>
+              <p className="text-sm font-medium text-ink">You&rsquo;re in! Confirm your email and your free study plan is on the way.</p>
             </Reveal>
           ) : (
             <form onSubmit={onSubmit} className="mx-auto mt-8 max-w-md" noValidate>
@@ -79,7 +79,7 @@ export function EarlyAccess() {
                   className="h-12 flex-1 rounded-lg border border-line bg-surface px-4 text-base text-ink placeholder:text-faint focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent-ring/30"
                 />
                 <Button type="submit" variant="primary" size="lg" disabled={status === "submitting"} className="group shrink-0">
-                  {status === "submitting" ? "Joining…" : "Join the founding circle"}
+                  {status === "submitting" ? "Sending…" : "Send my free study plan"}
                   {status !== "submitting" && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
                 </Button>
               </div>
@@ -89,7 +89,7 @@ export function EarlyAccess() {
                 </p>
               )}
               <p className="mt-3 text-xs text-muted">
-                We&rsquo;ll only email you about early access and updates. No spam — unsubscribe anytime.
+                We&rsquo;ll send your study plan and the occasional update. No spam — unsubscribe anytime.
               </p>
             </form>
           )}
