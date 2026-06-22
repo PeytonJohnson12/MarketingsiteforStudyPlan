@@ -8,9 +8,9 @@ export const site = {
     "StudyPlan is the Canvas study planner that never misses what's due. It reads your assignments and builds one calm daily plan. Free to start.",
   // ⚠️ LAUNCH: set this to the marketing site's real public domain before deploying.
   // It drives every canonical URL, the sitemap, robots.txt, and all structured data.
-  url: "https://pinnavel.com",
-  signupUrl: "https://pinnavel.com/signup",
-  loginUrl: "https://pinnavel.com/login",
+  url: "https://navolearning.com",
+  signupUrl: "https://app.navolearning.com/signup",
+  loginUrl: "https://app.navolearning.com/login",
   nav: [
     { label: "How it works", href: "/#how-it-works" },
     { label: "Features", href: "/#features" },
