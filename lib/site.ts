@@ -1,11 +1,11 @@
 export const site = {
-  name: "StudyPlan",
+  name: "Navo",
   // The company catchphrase — repeated in a few natural spots site-wide (footer,
   // final CTA, meta description, blog card). Carries the target search phrase
   // "Canvas study planner"; keep placements natural, never stuffed.
   catchphrase: "The Canvas study planner that never misses what's due.",
   description:
-    "StudyPlan is the Canvas study planner that never misses what's due. It reads your assignments and builds one calm daily plan. Free to start.",
+    "Navo is the Canvas study planner that never misses what's due. It reads your assignments and builds one calm daily plan. Free to start.",
   // ⚠️ LAUNCH: set this to the marketing site's real public domain before deploying.
   // It drives every canonical URL, the sitemap, robots.txt, and all structured data.
   url: "https://navolearning.com",

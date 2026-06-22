@@ -38,7 +38,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         description: post.excerpt,
         datePublished: post.date,
         url: `${site.url}/blog/${post.slug}`,
-        author: { "@type": "Organization", name: "StudyPlan" },
+        author: { "@type": "Organization", name: "Navo" },
         publisher: { "@id": `${site.url}/#org` },
       },
       {
@@ -77,7 +77,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         </div>
 
         <div className="mt-12 rounded-2xl border border-accent-ring/40 bg-surface p-6 text-center shadow-card">
-          <p className="text-base font-semibold text-ink">Let StudyPlan build your week for you.</p>
+          <p className="text-base font-semibold text-ink">Let Navo build your week for you.</p>
           <p className="mt-1.5 text-sm text-muted">{site.catchphrase} Free to start.</p>
           <ButtonLink href={site.signupUrl} variant="primary" size="md" className="mt-4">
             {site.primaryCta}

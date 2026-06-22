@@ -6,7 +6,7 @@ import { Constellation } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 const FAQS = [
-  { q: "Is StudyPlan free?", a: "Yes. The free plan covers what most students need. A paid plan adds more (coming soon)." },
+  { q: "Is Navo free?", a: "Yes. The free plan covers what most students need. A paid plan adds more (coming soon)." },
   { q: "Do I have to give you my Canvas password?", a: "No. You paste a read-only Canvas code. We never see or ask for your password." },
   { q: "Which schools work?", a: "Any school that uses Canvas. If your classes are in Canvas, you're good." },
   { q: "How long does setup take?", a: "About a minute. Paste your code, set your hours, and your plan is ready." },

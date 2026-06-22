@@ -4,7 +4,7 @@ import { FAQ } from "@/components/sections/FAQ";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Questions about the StudyPlan Canvas planner, answered — how it reads your Canvas assignments, privacy, setup time, and pricing.",
+    "Questions about the Navo Canvas planner, answered — how it reads your Canvas assignments, privacy, setup time, and pricing.",
   alternates: { canonical: "/faq" },
 };
 

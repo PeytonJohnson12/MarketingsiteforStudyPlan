@@ -110,7 +110,7 @@ const ROWS = [
   {
     icon: RefreshCw,
     title: "It updates itself",
-    body: "StudyPlan pulls your work from Canvas. Turn something in, and it moves to Done.",
+    body: "Navo pulls your work from Canvas. Turn something in, and it moves to Done.",
     Visual: SyncVisual,
   },
 ];

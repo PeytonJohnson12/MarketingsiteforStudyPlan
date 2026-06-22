@@ -21,7 +21,7 @@ export function ProductDemo() {
         <SectionHeading
           eyebrow="The difference"
           title="Six class pages, or one clear plan"
-          subtitle="Canvas dumps it all on you at once. StudyPlan shows what to do now."
+          subtitle="Canvas dumps it all on you at once. Navo shows what to do now."
         />
 
         {/* The real thing */}
@@ -50,7 +50,7 @@ export function ProductDemo() {
           {/* AFTER */}
           <Reveal delay={0.15}>
             <div className="rounded-2xl border border-accent-ring/50 bg-surface p-5 shadow-md ring-1 ring-accent-ring/30">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent">After · your StudyPlan</p>
+              <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent">After · your Navo</p>
               <div className="flex items-center justify-between rounded-lg bg-accent-soft/50 px-3 py-2.5">
                 <span className="text-sm font-semibold text-ink">Today · 4h planned</span>
                 <span className="rounded-full bg-success-soft px-2 py-0.5 text-xs font-medium text-success">On track</span>

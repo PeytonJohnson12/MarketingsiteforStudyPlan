@@ -1,8 +1,8 @@
-# StudyPlan — Marketing Site
+# Navo — Marketing Site
 
-The conversion-focused marketing/landing site for **StudyPlan** (the Canvas-connected
+The conversion-focused marketing/landing site for **Navo** (the Canvas-connected
 daily study planner). Its single goal is account signups; CTAs point to the app at
-[pinnavel.com](https://pinnavel.com). Built as a standalone project, separate from the app.
+[app.navolearning.com](https://app.navolearning.com). Built as a standalone project, separate from the app.
 
 ## Stack
 - **Next.js 15** (App Router, static export) · **TypeScript**

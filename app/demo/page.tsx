@@ -14,7 +14,7 @@ export default function DemoPage() {
     <main id="main" className="container-page py-16 sm:py-20">
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-sm font-semibold uppercase tracking-wider text-accent">See it in action</p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl">Watch StudyPlan work</h1>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight text-ink sm:text-5xl">Watch Navo work</h1>
         <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
           Scattered Canvas deadlines become one calm daily plan — in about 20 seconds. No sign-up needed to watch.
         </p>
@@ -25,7 +25,7 @@ export default function DemoPage() {
           <div className="aspect-video w-full">
             <iframe
               src="/demo.html"
-              title="StudyPlan product demo"
+              title="Navo product demo"
               className="h-full w-full border-0"
               loading="eager"
             />

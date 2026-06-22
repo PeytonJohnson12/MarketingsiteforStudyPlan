@@ -20,7 +20,7 @@ export function HowItWorks() {
         <SectionHeading
           eyebrow="How it works"
           title="From a mess to a clear day in 3 steps"
-          subtitle="No long setup. Connect once. StudyPlan plans the rest for you."
+          subtitle="No long setup. Connect once. Navo plans the rest for you."
         />
 
       <div className="relative mt-14 grid gap-6 md:grid-cols-3">

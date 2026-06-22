@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: "The terms for using StudyPlan.",
+  description: "The terms for using Navo.",
   alternates: { canonical: "/terms" },
 };
 
@@ -33,18 +33,18 @@ export default function TermsPage() {
         <div className="mt-8 space-y-8 text-[15px] leading-relaxed text-muted">
           <p>
             These Terms of Service (&ldquo;Terms&rdquo;) are an agreement between you and [Company Legal Name]
-            (&ldquo;StudyPlan,&rdquo; &ldquo;we,&rdquo; or &ldquo;us&rdquo;) for your use of the StudyPlan website and app
+            (&ldquo;Navo,&rdquo; &ldquo;we,&rdquo; or &ldquo;us&rdquo;) for your use of the Navo website and app
             (the &ldquo;Service&rdquo;). By using the Service, you agree to these Terms. If you do not agree, please do
             not use the Service.
           </p>
 
           <Term title="1. The Service">
-            StudyPlan connects to your Canvas account, with your permission, and turns your assignments and due dates into
+            Navo connects to your Canvas account, with your permission, and turns your assignments and due dates into
             one daily study plan. We access your Canvas data on a read-only basis to build your plan. We do not submit,
             edit, or delete anything in Canvas.
           </Term>
 
-          <Term title="2. Who can use StudyPlan">
+          <Term title="2. Who can use Navo">
             You must be able to form a binding contract where you live. If you are under 18, you may use the Service only
             with the involvement and consent of a parent or guardian. The Service is not directed to children under 13,
             and we do not knowingly collect personal information from children under 13 without verifiable parental
@@ -57,7 +57,7 @@ export default function TermsPage() {
           </Term>
 
           <Term title="4. Connecting Canvas">
-            To use StudyPlan you may give us a read-only Canvas access token that you generate. You authorize us to use it
+            To use Navo you may give us a read-only Canvas access token that you generate. You authorize us to use it
             only to read the coursework needed to build your plan. You can disconnect at any time. Your use of Canvas
             remains subject to your school&rsquo;s and Canvas&rsquo;s own terms.
           </Term>
@@ -68,7 +68,7 @@ export default function TermsPage() {
           </Term>
 
           <Term title="6. Free and paid plans">
-            StudyPlan offers a free plan and may offer paid features. Prices, billing, and what each plan includes will be
+            Navo offers a free plan and may offer paid features. Prices, billing, and what each plan includes will be
             shown at the point of purchase. [Add your billing, renewal, refund, and cancellation terms here.]
           </Term>
 
@@ -78,23 +78,23 @@ export default function TermsPage() {
           </Term>
 
           <Term title="8. Our intellectual property">
-            StudyPlan, including its software, design, and brand, belongs to us or our licensors. These Terms do not give
+            Navo, including its software, design, and brand, belongs to us or our licensors. These Terms do not give
             you any rights to our name, logo, or content except to use the Service as intended.
           </Term>
 
           <Term title="9. Not affiliated with Canvas / Instructure">
-            StudyPlan is an independent product. We are not affiliated with, endorsed by, or sponsored by Instructure,
-            Inc. or Canvas. &ldquo;Canvas&rdquo; is used only to describe the platform StudyPlan works with.
+            Navo is an independent product. We are not affiliated with, endorsed by, or sponsored by Instructure,
+            Inc. or Canvas. &ldquo;Canvas&rdquo; is used only to describe the platform Navo works with.
           </Term>
 
           <Term title="10. Disclaimers">
-            The Service is provided &ldquo;as is&rdquo; and &ldquo;as available.&rdquo; While StudyPlan is designed to help
+            The Service is provided &ldquo;as is&rdquo; and &ldquo;as available.&rdquo; While Navo is designed to help
             you keep track of your work, we do not guarantee that your plan is complete, accurate, or error-free. You are
             responsible for your own assignments and deadlines, and you should always confirm important details in Canvas.
           </Term>
 
           <Term title="11. Limitation of liability">
-            To the fullest extent allowed by law, StudyPlan will not be liable for indirect, incidental, or consequential
+            To the fullest extent allowed by law, Navo will not be liable for indirect, incidental, or consequential
             damages, or for missed deadlines or lost work arising from your use of the Service. [Add any liability cap
             here, e.g., limited to the amount you paid us in the prior 12 months.]
           </Term>

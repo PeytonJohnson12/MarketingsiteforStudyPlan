@@ -35,7 +35,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-// Anchor styled as a button — for CTA links (signup/login on pinnavel.com).
+// Anchor styled as a button — for CTA links (signup/login on app.navolearning.com).
 export interface ButtonLinkProps
   extends React.AnchorHTMLAttributes<HTMLAnchorElement>,
     VariantProps<typeof buttonVariants> {}

@@ -32,7 +32,7 @@ export function PlanMock() {
         <span className="h-2.5 w-2.5 rounded-full bg-danger/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-warning/70" />
         <span className="h-2.5 w-2.5 rounded-full bg-success/70" />
-        <span className="ml-3 text-xs text-faint">pinnavel.com · Your plan</span>
+        <span className="ml-3 text-xs text-faint">app.navolearning.com · Your plan</span>
       </div>
 
       <motion.div

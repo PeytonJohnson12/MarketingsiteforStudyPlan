@@ -8,7 +8,7 @@ const PILLARS = [
 
 export function TrustBar() {
   return (
-    <section aria-label="Why you can trust StudyPlan" className="border-y border-line-subtle bg-surface/60">
+    <section aria-label="Why you can trust Navo" className="border-y border-line-subtle bg-surface/60">
       <div className="container-page flex flex-col items-center justify-center gap-5 py-8 sm:flex-row sm:gap-x-16">
         {PILLARS.map((p, i) => (
           <Reveal key={p.label} delay={i * 0.08}>

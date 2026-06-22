@@ -7,7 +7,7 @@ export function Logo({ className }: { className?: string }) {
           <path d="M9 12.5l2 2 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </span>
-      <span className="text-lg font-semibold tracking-tight text-ink">StudyPlan</span>
+      <span className="text-lg font-semibold tracking-tight text-ink">Navo</span>
     </span>
   );
 }
