@@ -1,0 +1,3 @@
+# Treat PDFs as binary so autocrlf line-ending normalization never corrupts them
+# (e.g. the emailed study guide at public/study-guide.pdf).
+*.pdf binary
