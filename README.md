@@ -45,3 +45,8 @@ What's already in place: per-page titles/descriptions/canonicals, Organization +
 - **Pricing is placeholder.** Set the paid tier's name, price, and features at the top of
   `components/sections/Pricing.tsx` (`PAID_NAME`, `PAID_PRICE`, `PAID_FEATURES`) before publishing.
 - The hero's canvas particle field and the rest of the motion respect reduced-motion.
+- **Analytics:** Google Analytics 4 (gtag.js) is wired in `components/GoogleAnalytics.tsx` and loads
+  **in production only** (so local dev doesn't pollute the data). The measurement ID lives in
+  `lib/site.ts` (`gaId`). The `early_access_signup` event in `lib/earlyAccess.ts` fires once GA is live.
+  ⚠️ Before launch, add a cookie-consent step (GA sets cookies) — important given the student/EU
+  audience (GDPR/COPPA). GA4 anonymizes IPs by default but consent is still your call.

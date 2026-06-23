@@ -11,6 +11,9 @@ export const site = {
   url: "https://navolearning.com",
   signupUrl: "https://app.navolearning.com/signup",
   loginUrl: "https://app.navolearning.com/login",
+  // Google Analytics 4 measurement ID (public by design). Loads in production only
+  // — see components/GoogleAnalytics.tsx — so local dev doesn't pollute the data.
+  gaId: "G-659VLP0CQN",
   nav: [
     { label: "How it works", href: "/#how-it-works" },
     { label: "Features", href: "/#features" },
