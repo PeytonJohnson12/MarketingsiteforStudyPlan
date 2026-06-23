@@ -1,18 +1,9 @@
 // Early-access ("founding circle") email capture.
 //
-// The marketing site is a STATIC export (no server), so the form submits straight
-// from the browser to your email tool's PUBLIC form endpoint — set it via env below.
-//
-// ⚠️ Use a PUBLIC form endpoint only (a form ID/URL, NOT a secret API key): a secret
-// key placed in client-side code is visible to everyone. Email tools with a safe
-// public form POST include Kit (ConvertKit), MailerLite, and Loops. If the tool you
-// pick requires a secret key, we'll add a tiny serverless function instead — tell me
-// which tool and I'll finish the wiring.
-//
-// Set NEXT_PUBLIC_EARLY_ACCESS_ENDPOINT to that endpoint. The exact request body can
-// differ per tool; if so, it's a one-line change in `subscribeEarlyAccess` below.
-
-const ENDPOINT = process.env.NEXT_PUBLIC_EARLY_ACCESS_ENDPOINT;
+// Submits to our own /api/subscribe route, which talks to Resend server-side so
+// the secret API key is never exposed to the browser. Configure the keys there
+// (RESEND_API_KEY, RESEND_AUDIENCE_ID — see .env.example). Until they're set, the
+// route returns `not_configured` and the form shows a "check back soon" message.
 
 export function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -26,15 +17,18 @@ export type SubscribeResult =
 export async function subscribeEarlyAccess(email: string): Promise<SubscribeResult> {
   const trimmed = email.trim();
   if (!isValidEmail(trimmed)) return { ok: false, reason: "invalid" };
-  if (!ENDPOINT) return { ok: false, reason: "not_configured" };
   try {
-    const res = await fetch(ENDPOINT, {
+    const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: trimmed, source: "early-access" }),
+      body: JSON.stringify({ email: trimmed }),
     });
-    if (!res.ok) return { ok: false, reason: "network" };
-    return { ok: true };
+    if (res.ok) return { ok: true };
+    // Surface the server's reason (e.g. not_configured) when it sends one.
+    const data = (await res.json().catch(() => null)) as { reason?: string } | null;
+    if (data?.reason === "not_configured") return { ok: false, reason: "not_configured" };
+    if (data?.reason === "invalid") return { ok: false, reason: "invalid" };
+    return { ok: false, reason: "network" };
   } catch {
     return { ok: false, reason: "network" };
   }

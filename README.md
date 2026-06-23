@@ -36,7 +36,7 @@ All technical SEO is wired and ships with the build — these are the steps to d
 3. Create a [Google Search Console](https://search.google.com/search-console) property for the domain and submit the sitemap.
 4. Run pages through Google's [Rich Results Test](https://search.google.com/test/rich-results) (home, a blog post, FAQ) to confirm the structured data is read.
 5. Run Lighthouse (Chrome DevTools) and fix any Core Web Vitals flags — animations are the likeliest LCP/CLS suspects.
-6. Set `NEXT_PUBLIC_EARLY_ACCESS_ENDPOINT` so the founding-circle form collects emails.
+6. Set `RESEND_API_KEY`, `RESEND_AUDIENCE_ID`, and `RESEND_FROM` (see `.env.example`) so the early-access form collects emails. The form posts to `/api/subscribe`, which (a) adds the contact to your Resend Audience, (b) emails them the welcome message with the free study guide **attached** (`public/study-guide.pdf`, the Navo-branded "Deadline-Proof Week"), and (c) fires the optional `study_guide.requested` event. `RESEND_FROM` must be on a Resend-verified domain, and the attachment fetches `study-guide.pdf` from the deployed site (so it only attaches once the site is live). If you add a Resend Automation on `study_guide.requested`, make it **follow-up emails only** — the guide is already sent by the route.
 
 What's already in place: per-page titles/descriptions/canonicals, Organization + WebSite + SoftwareApplication schema (site-wide), FAQPage schema, BlogPosting + breadcrumb schema on posts, a full sitemap, robots.txt, semantic heading hierarchy (one h1 per page), and a static prerender of every route. No hidden text or other spam-policy tricks — Google penalizes those.
 

@@ -54,7 +54,7 @@ export function EarlyAccess() {
           {status === "success" ? (
             <Reveal className="mx-auto mt-8 flex max-w-md items-center justify-center gap-2.5 rounded-xl border border-success/30 bg-success-soft/50 px-5 py-4">
               <CheckCircle2 className="h-5 w-5 shrink-0 text-success" />
-              <p className="text-sm font-medium text-ink">You&rsquo;re in! Confirm your email and your free study plan is on the way.</p>
+              <p className="text-sm font-medium text-ink">You&rsquo;re in! Your free study plan is on the way — check your inbox.</p>
             </Reveal>
           ) : (
             <form onSubmit={onSubmit} className="mx-auto mt-8 max-w-md" noValidate>
