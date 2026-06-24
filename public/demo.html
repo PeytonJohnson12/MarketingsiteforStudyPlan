@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>StudyPlan — Product Demo</title>
+<title>Navo — Product Demo</title>
 <style>
   :root{
     --violet:#7c5cf0; --violet-600:#6a47e0; --violet-50:#f3f0ff; --violet-200:#d9cffb;
@@ -65,18 +65,69 @@
   .arow .ct{font-size:12px;color:var(--muted);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
   .arow .dd{font-size:13px;font-weight:600;color:var(--muted);}
 
-  /* dashboard (scene 5) */
-  .dash{position:absolute; left:300px; top:96px; width:680px;}
-  .focus{background:var(--violet); color:#fff; border-radius:16px; padding:20px 22px; box-shadow:0 18px 40px rgba(124,92,240,.35); margin-bottom:16px;}
-  .focus .k{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.85;}
-  .focus .big{font-size:24px;font-weight:800;margin-top:7px;}
-  .focus .meta{font-size:13px;opacity:.9;margin-top:8px;}
-  .todo{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 6px;box-shadow:0 10px 24px rgba(20,20,40,.06);}
-  .titem{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line);}
-  .titem:last-child{border-bottom:none;}
-  .titem .num{width:24px;height:24px;border-radius:7px;background:var(--violet-50);color:var(--violet-600);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
-  .titem .nm{flex:1;font-size:14px;color:var(--ink);font-weight:500;}
-  .titem .dd{font-size:12px;color:var(--muted);}
+  /* dashboard (scene 5) — mirrors the app's command-screen layout */
+  .dash{position:absolute; left:188px; top:54px; width:904px;}
+  .dhead{display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:12px;}
+  .dhead .greet{font-size:23px; font-weight:800; color:var(--ink); letter-spacing:-.01em;}
+  .dhead .date{font-size:14px; color:var(--muted); margin-top:4px;}
+  .ring{position:relative; width:94px; height:94px; border-radius:50%; flex:0 0 auto;
+    background:conic-gradient(var(--violet) 0% 40%, var(--violet-50) 40% 100%);}
+  .ring::after{content:""; position:absolute; inset:11px; border-radius:50%; background:#fff;}
+  .ring .rin{position:absolute; inset:0; z-index:2; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .ring .pct{font-size:25px; font-weight:800; color:var(--ink); line-height:1;}
+  .ring .rsub{font-size:10px; font-weight:600; color:var(--muted); margin-top:3px;}
+  .dbody{display:flex; gap:18px; align-items:flex-start;}
+  .dmain{flex:1; min-width:0;}
+  .drail{width:284px; flex:0 0 auto;}
+  /* focus module (solid violet) */
+  .focus{background:var(--violet); color:#fff; border-radius:16px; padding:18px 22px; box-shadow:0 18px 40px rgba(124,92,240,.35); margin-bottom:12px; display:flex; gap:22px;}
+  .focus .fmain{flex:1; min-width:0;}
+  .focus .k{font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.8);}
+  .focus .big{font-size:26px; font-weight:800; line-height:1.1; margin-top:5px; letter-spacing:-.01em;}
+  .focus .chips{display:flex; gap:8px; margin-top:13px;}
+  .focus .fchip{font-size:12px; font-weight:600; color:#fff; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.28); border-radius:999px; padding:4px 12px;}
+  .focus .rat{font-size:14px; color:rgba(255,255,255,.9); margin-top:13px;}
+  .focus .fbtns{display:flex; gap:10px; margin-top:18px;}
+  .focus .b1{background:#fff; color:var(--violet-600); font-weight:700; font-size:14px; border-radius:12px; padding:10px 20px;}
+  .focus .b2{border:1px solid rgba(255,255,255,.4); color:#fff; font-weight:600; font-size:14px; border-radius:12px; padding:10px 20px;}
+  .focus .nextup{width:166px; flex:0 0 auto; border-left:1px solid rgba(255,255,255,.2); padding-left:18px;}
+  .focus .nextup .k{color:rgba(255,255,255,.7);}
+  .focus .nu{margin-top:14px;}
+  .focus .nu .nm{font-size:14px; font-weight:700; color:#fff; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+  .focus .nu .mt{font-size:12px; color:rgba(255,255,255,.72); margin-top:2px;}
+  /* today card */
+  .card5{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 16px; box-shadow:0 10px 24px rgba(20,20,40,.06);}
+  .card5 .ch{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:4px;}
+  .card5 .ch h2{font-size:17px; font-weight:700; color:var(--ink);}
+  .card5 .ch .dt{font-size:13px; color:var(--muted);}
+  .trow{display:flex; align-items:center; gap:13px; padding:8px 8px; border-radius:11px;}
+  .trow.lead{background:var(--violet-50); border-left:3px solid var(--violet);}
+  .disc{width:20px; height:20px; border-radius:50%; flex:0 0 auto;}
+  .disc.active{border:2px solid #cfd0d8;}
+  .disc.study{border:2px solid #86dcb6;}
+  .disc.done{background:var(--green); display:flex; align-items:center; justify-content:center; color:#fff; font-size:11px; font-weight:900;}
+  .trow .ti{flex:1; min-width:0;}
+  .trow .ti .nm{font-size:14px; font-weight:600; color:var(--ink);}
+  .trow .ti .nm.dn{color:var(--muted); text-decoration:line-through; font-weight:500;}
+  .trow .ti .sub{font-size:12px; color:var(--muted); margin-top:1px;}
+  .trow .rt{font-size:13px; font-weight:600; color:var(--muted);}
+  .trow .rt.ld{color:var(--violet-600);}
+  .trow .rt.gn{color:var(--green);}
+  .trow .slnk{font-size:12px; font-weight:700; color:var(--violet-600);}
+  /* rail cards */
+  .rcard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:0 10px 24px rgba(20,20,40,.06); margin-bottom:14px;}
+  .rcard h2{font-size:16px; font-weight:700; color:var(--ink);}
+  .rcard .hrs{font-size:30px; font-weight:800; color:var(--violet-600); margin-top:8px; line-height:1;}
+  .rcard .hrs small{font-size:13px; font-weight:400; color:var(--muted);}
+  .rcard .free{font-size:13px; color:var(--muted); margin-top:9px;}
+  .rcard .rdue{font-size:13px; color:var(--muted); margin-top:10px; border-top:1px solid var(--line); padding-top:10px;}
+  .rcard.over{border-color:rgba(214,69,61,.3);}
+  .rcard .oh{display:flex; align-items:center; gap:8px; font-size:15px; font-weight:700; color:var(--danger);}
+  .rcard .oh .od{width:9px; height:9px; border-radius:50%; background:var(--danger);}
+  .rcard .oitem{display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:13px;}
+  .rcard .oitem .on{font-size:14px; color:var(--ink); overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+  .rcard .oitem .opill{font-size:11px; font-weight:600; color:var(--danger); background:rgba(214,69,61,.1); border-radius:999px; padding:3px 9px; flex:0 0 auto;}
+  .jump{font-size:14px; font-weight:600; color:var(--violet-600); padding:5px 2px;}
 
   /* week (scene 6) */
   .week{position:absolute; left:150px; top:150px; width:980px; display:grid; grid-template-columns:repeat(7,1fr); gap:10px;}
@@ -111,7 +162,7 @@
 <body>
 <div id="scaler"><div class="stage" id="stage">
 
-  <div class="brand" id="brand"><div class="mark">S</div><div class="name">StudyPlan</div></div>
+  <div class="brand" id="brand"><div class="mark">✓</div><div class="name">Navo</div></div>
 
   <!-- Scene 1: clutter -->
   <div class="layer clutter" id="s1">
@@ -161,18 +212,53 @@
     </div>
   </div>
 
-  <!-- Scene 5: dashboard -->
+  <!-- Scene 5: dashboard (mirrors the app command screen) -->
   <div class="layer" id="s5">
     <div class="dash">
-      <div class="focus">
-        <div class="k">Today's focus</div>
-        <div class="big">Quiz 4 — study session</div>
-        <div class="meta">~45 min · due Mon · CS 201</div>
+      <div class="dhead">
+        <div>
+          <div class="greet">Good morning, Maya</div>
+          <div class="date">Friday, March 14</div>
+        </div>
+        <div class="ring"><div class="rin"><div class="pct">40%</div><div class="rsub">2 of 5 done</div></div></div>
       </div>
-      <div class="todo">
-        <div class="titem"><div class="num">1</div><div class="nm">Lab report 3 — write first half</div><div class="dd">1h</div></div>
-        <div class="titem"><div class="num">2</div><div class="nm">Problem set 7</div><div class="dd">45m</div></div>
-        <div class="titem"><div class="num">3</div><div class="nm">Reading response</div><div class="dd">30m</div></div>
+      <div class="dbody">
+        <div class="dmain">
+          <div class="focus">
+            <div class="fmain">
+              <div class="k">Focus now</div>
+              <div class="big">Lab report 3</div>
+              <div class="chips"><span class="fchip">Due 5:00 PM</span><span class="fchip">40 pts</span></div>
+              <div class="rat">Worth 40 pts and due today — knock it out today.</div>
+              <div class="fbtns"><span class="b1">Open</span><span class="b2">See my plan ›</span></div>
+            </div>
+            <div class="nextup">
+              <div class="k">Next up</div>
+              <div class="nu"><div class="nm">Quiz 4</div><div class="mt">Quiz · CS 201</div></div>
+              <div class="nu"><div class="nm">Problem set 7</div><div class="mt">Assignment · Calc II</div></div>
+            </div>
+          </div>
+          <div class="card5">
+            <div class="ch"><h2>Today</h2><span class="dt">Fri, Mar 14</span></div>
+            <div class="trow lead"><span class="disc active"></span><div class="ti"><div class="nm">Lab report 3</div><div class="sub">Assignment · Bio 101</div></div><span class="rt ld">5:00 PM</span></div>
+            <div class="trow"><span class="disc active"></span><div class="ti"><div class="nm">Quiz 4</div><div class="sub">Quiz · CS 201</div></div><span class="slnk">Study</span></div>
+            <div class="trow"><span class="disc done">✓</span><div class="ti"><div class="nm dn">Reading response</div><div class="sub">Assignment · English</div></div><span class="rt gn">Done</span></div>
+          </div>
+        </div>
+        <div class="drail">
+          <div class="rcard">
+            <h2>This week</h2>
+            <div class="hrs">12h <small>of work</small></div>
+            <div class="free">3h free</div>
+            <div class="rdue">8 due · 2 exams / quizzes</div>
+          </div>
+          <div class="rcard over">
+            <div class="oh"><span class="od"></span> Overdue (1)</div>
+            <div class="oitem"><span class="on">Discussion post 2</span><span class="opill">Past due</span></div>
+          </div>
+          <div class="jump">Jump to timeline →</div>
+          <div class="jump">Open calendar →</div>
+        </div>
       </div>
     </div>
   </div>
@@ -210,7 +296,7 @@
 
   <!-- Scene 9: logo + CTA -->
   <div class="layer" id="s9"><div class="endwrap">
-    <div class="endbrand"><div class="mark">S</div><div class="name">StudyPlan</div></div>
+    <div class="endbrand"><div class="mark">✓</div><div class="name">Navo</div></div>
     <div class="startbtn" id="startBtn">Start free →</div>
   </div></div>
 
@@ -262,7 +348,7 @@
     [14000,17000,"See your whole week."],
     [17000,19000,"Know when to start."],
     [19000,21000,"Never miss another deadline."],
-    [21000,22000,"StudyPlan · Start free"],
+    [21000,22000,"Navo · Start free"],
   ];
   const capEl=el('cap');
 
