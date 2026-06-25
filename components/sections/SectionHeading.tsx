@@ -25,7 +25,7 @@ export function SectionHeading({
         </Reveal>
       )}
       <Reveal delay={0.05}>
-        <Heading className="mt-4 text-balance text-3xl font-semibold tracking-tight text-ink sm:text-4xl">{title}</Heading>
+        <Heading className="mt-4 text-balance font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">{title}</Heading>
       </Reveal>
       {subtitle && (
         <Reveal delay={0.1}>

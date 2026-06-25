@@ -44,7 +44,7 @@ export function Nav() {
 
         <div className="hidden items-center gap-2 md:flex">
           <ButtonLink href={site.loginUrl} variant="ghost" size="sm">Log in</ButtonLink>
-          <ButtonLink href={site.signupUrl} variant="primary" size="sm">{site.primaryCta}</ButtonLink>
+          <ButtonLink href={site.signupUrl} variant="primary" size="md">{site.primaryCta}</ButtonLink>
         </div>
 
         <button

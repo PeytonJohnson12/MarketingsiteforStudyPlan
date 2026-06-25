@@ -30,7 +30,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-5 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
+            className="mt-5 text-balance font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
             Know what&rsquo;s due. Ace what&rsquo;s <span className="text-gradient">next.</span>
           </motion.h1>

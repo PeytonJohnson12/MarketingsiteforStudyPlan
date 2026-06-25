@@ -8,12 +8,10 @@ const TONES: Record<"cool" | "warm", Orb[]> = {
   cool: [
     { size: 340, pos: { top: "-5rem", left: "-4rem" }, color: "124 92 240", anim: "animate-drift", delay: "0s" },
     { size: 300, pos: { bottom: "-6rem", right: "-3rem" }, color: "14 165 233", anim: "animate-drift-slow", delay: "-7s" },
-    { size: 220, pos: { top: "28%", right: "18%" }, color: "236 72 153", anim: "animate-drift", delay: "-13s" },
   ],
   warm: [
     { size: 320, pos: { top: "-4rem", right: "-4rem" }, color: "47 158 107", anim: "animate-drift-slow", delay: "-3s" },
-    { size: 280, pos: { bottom: "-5rem", left: "-3rem" }, color: "217 148 35", anim: "animate-drift", delay: "-10s" },
-    { size: 220, pos: { top: "34%", left: "16%" }, color: "124 92 240", anim: "animate-drift-slow", delay: "-16s" },
+    { size: 280, pos: { bottom: "-5rem", left: "-3rem" }, color: "124 92 240", anim: "animate-drift", delay: "-10s" },
   ],
 };
 
@@ -66,7 +64,7 @@ export function Blobs({ tone = "cool", className }: { tone?: "cool" | "warm"; cl
             width: o.size,
             height: o.size,
             ...o.pos,
-            background: `radial-gradient(closest-side, rgb(${o.color} / 0.16), rgb(${o.color} / 0.05), transparent)`,
+            background: `radial-gradient(closest-side, rgb(${o.color} / 0.12), rgb(${o.color} / 0.04), transparent)`,
             animationDelay: o.delay,
           }}
         />
