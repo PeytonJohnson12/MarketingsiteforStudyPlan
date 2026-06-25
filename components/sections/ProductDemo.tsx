@@ -51,9 +51,10 @@ export function ProductDemo() {
           <Reveal delay={0.15}>
             <div className="rounded-2xl border border-accent-ring/50 bg-surface p-5 shadow-md ring-1 ring-accent-ring/30">
               <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-accent">After · your Navo</p>
-              <div className="flex items-center justify-between rounded-lg bg-accent-soft/50 px-3 py-2.5">
-                <span className="text-sm font-semibold text-ink">Today · 4h planned</span>
-                <span className="rounded-full bg-success-soft px-2 py-0.5 text-xs font-medium text-success">On track</span>
+              <div className="rounded-xl bg-accent px-4 py-3 text-white">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-white/80">Focus now</p>
+                <p className="mt-0.5 text-lg font-bold leading-tight">Problem Set 4</p>
+                <p className="mt-0.5 text-xs text-white/90">2h · due today · CS 350</p>
               </div>
               <div className="mt-2 space-y-2">
                 {CLEAN.map((c) => (
