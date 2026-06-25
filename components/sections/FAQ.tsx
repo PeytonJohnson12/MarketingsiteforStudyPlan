@@ -6,7 +6,7 @@ import { Constellation } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 const FAQS = [
-  { q: "Is Navo free?", a: "Yes. The free plan covers what most students need. A paid plan adds more (coming soon)." },
+  { q: "Is Navo free? What does it cost?", a: "You get a free 7-day trial to try the whole thing. After that it's a simple monthly subscription. You add a card when you sign up and you're charged after the trial — cancel anytime before then and you won't be billed." },
   { q: "Do I have to give you my Canvas password?", a: "No. You paste a read-only Canvas code. We never see or ask for your password." },
   { q: "Which schools work?", a: "Any school that uses Canvas. If your classes are in Canvas, you're good." },
   { q: "How long does setup take?", a: "About a minute. Paste your code, set your hours, and your plan is ready." },

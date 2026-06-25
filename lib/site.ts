@@ -5,7 +5,7 @@ export const site = {
   // "Canvas study planner"; keep placements natural, never stuffed.
   catchphrase: "The Canvas study planner that never misses what's due.",
   description:
-    "Navo is the Canvas study planner that never misses what's due. It reads your assignments and builds one calm daily plan. Free to start.",
+    "Navo is the Canvas study planner that never misses what's due. It reads your assignments and builds one calm daily plan. Free for 7 days.",
   // ⚠️ LAUNCH: set this to the marketing site's real public domain before deploying.
   // It drives every canonical URL, the sitemap, robots.txt, and all structured data.
   url: "https://navolearning.com",
@@ -22,5 +22,5 @@ export const site = {
     { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ],
-  primaryCta: "Start my free plan",
+  primaryCta: "Start my free trial",
 } as const;

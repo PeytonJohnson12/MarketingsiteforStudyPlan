@@ -67,9 +67,10 @@ export default function TermsPage() {
             unauthorized ways, scrape it, resell it, or interfere with how it works.
           </Term>
 
-          <Term title="6. Free and paid plans">
-            Navo offers a free plan and may offer paid features. Prices, billing, and what each plan includes will be
-            shown at the point of purchase. [Add your billing, renewal, refund, and cancellation terms here.]
+          <Term title="6. Free trial and billing">
+            Navo is a paid subscription with a 7-day free trial. You add a payment method when you sign up, and your
+            subscription begins automatically when the trial ends unless you cancel before then. Prices and billing terms
+            are shown at the point of purchase. [Add your billing, renewal, refund, and cancellation terms here.]
           </Term>
 
           <Term title="7. Your content and data">

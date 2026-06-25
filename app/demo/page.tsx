@@ -38,7 +38,7 @@ export default function DemoPage() {
         <div className="flex flex-col items-center gap-5 rounded-2xl border border-line-subtle bg-accent-soft/60 px-6 py-7 text-center sm:flex-row sm:justify-between sm:text-left">
           <div>
             <p className="text-xl font-bold tracking-tight text-ink">Ready to try it yourself?</p>
-            <p className="mt-1 text-sm text-muted">Connect Canvas and get your first daily plan in minutes — free to start.</p>
+            <p className="mt-1 text-sm text-muted">Connect Canvas and get your first daily plan in minutes — free for 7 days.</p>
           </div>
           <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="shrink-0">
             {site.primaryCta}

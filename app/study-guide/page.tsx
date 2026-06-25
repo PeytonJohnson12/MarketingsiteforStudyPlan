@@ -34,7 +34,7 @@ export default function StudyGuidePage() {
           <p className="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted">
             Stop the scramble. Seven quick moves to a calmer college week — set it up once (about an hour), keep it going in 10 minutes a week.
           </p>
-          <p className="mt-4 text-sm text-faint">Navo Free · 2-min read</p>
+          <p className="mt-4 text-sm text-faint">Free guide · 2-min read</p>
         </div>
       </section>
 
@@ -60,10 +60,10 @@ export default function StudyGuidePage() {
           </div>
 
           <div className="mx-auto mt-10 max-w-2xl rounded-2xl border border-accent-ring/40 bg-surface p-6 text-center shadow-card">
-            <p className="text-base font-semibold text-ink">Navo does moves 1, 3 &amp; 5 for you — free.</p>
+            <p className="text-base font-semibold text-ink">Navo does moves 1, 3 &amp; 5 for you.</p>
             <p className="mt-1.5 text-sm text-muted">Connect Canvas once and just open it to see today&rsquo;s plan.</p>
             <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="mt-4">
-              Start free
+              Start my free trial
             </ButtonLink>
           </div>
 

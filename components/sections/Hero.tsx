@@ -48,7 +48,7 @@ export function Hero() {
           </motion.div>
 
           <motion.p variants={item} className="mt-4 flex items-center gap-2 text-sm text-muted">
-            <ShieldCheck className="h-4 w-4 text-success" /> Free to start · Set up in about a minute · No card needed.
+            <ShieldCheck className="h-4 w-4 text-success" /> Free for 7 days · Set up in about a minute · Cancel anytime.
           </motion.p>
 
           <motion.p variants={item} className="mt-9 text-sm text-muted">

@@ -34,7 +34,7 @@ function welcomeHtml(): string {
     <p style="font-size:16px;line-height:1.6;margin:0 0 14px;">Thanks for signing up. Your free study plan &mdash; <strong>The Deadline-Proof Week</strong> &mdash; is attached to this email.</p>
     <p style="font-size:16px;line-height:1.6;margin:0 0 14px;">It&rsquo;s 7 quick moves to a calmer week. Set it up once, then keep it going in about 10 minutes a week.</p>
     <p style="margin:24px 0;">
-      <a href="${site.signupUrl}" style="background:#7C5CF0;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 22px;border-radius:9px;display:inline-block;">Start free</a>
+      <a href="${site.signupUrl}" style="background:#7C5CF0;color:#ffffff;text-decoration:none;font-weight:600;font-size:15px;padding:12px 22px;border-radius:9px;display:inline-block;">Start my free trial</a>
     </p>
     <p style="font-size:14px;line-height:1.6;color:#52525B;margin:0;">Navo connects to Canvas and shows you what&rsquo;s due, so nothing slips.<br/>&mdash; The Navo team</p>
   </div>`;

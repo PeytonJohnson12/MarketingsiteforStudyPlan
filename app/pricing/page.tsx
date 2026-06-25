@@ -4,7 +4,7 @@ import { Pricing } from "@/components/sections/Pricing";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Navo pricing — the Canvas study planner is free to start, no card needed. Upgrade when you want more.",
+    "Navo pricing — the Canvas study planner is free for 7 days, then a simple monthly subscription. Cancel anytime.",
   alternates: { canonical: "/pricing" },
 };
 

@@ -45,7 +45,7 @@ export function FinalCTA() {
               </ButtonLink>
             </div>
             <p className="mt-5 flex items-center justify-center gap-2 text-sm text-white/60">
-              <ShieldCheck className="h-4 w-4" /> Free to start · No card needed · Read-only
+              <ShieldCheck className="h-4 w-4" /> Free for 7 days · Cancel anytime · Read-only
             </p>
           </div>
         </div>

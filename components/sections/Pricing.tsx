@@ -4,36 +4,20 @@ import { Reveal } from "@/components/ui/reveal";
 import { ButtonLink } from "@/components/ui/button";
 import { Constellation } from "@/components/Decor";
 import { site } from "@/lib/site";
-import { cn } from "@/lib/utils";
 
 /*
- * ⚠️ PLACEHOLDER PRICING — replace the paid tier's name, price, and features
- * with your real plan before publishing. Both CTAs point to signup.
+ * ⚠️ PLACEHOLDER PRICE — set PAID_PRICE to your real monthly price before
+ * publishing (it drives the card display + the trial line). Keep
+ * app/layout.tsx JSON-LD `offers.price` in sync. The card is collected at
+ * signup; the student is charged after the 7-day free trial.
  */
-const PAID_NAME = "Pro";
-const PAID_PRICE = "$X"; // e.g. "$4"
-const PAID_FEATURES = [
-  "Everything in Free",
-  "More features — coming soon",
-];
+const PAID_PRICE = "$4"; // [SET PRICE] placeholder
 
-const TIERS = [
-  {
-    name: "Free",
-    price: "$0",
-    blurb: "Everything you need to plan your week.",
-    features: ["One daily plan from Canvas", "Nothing due ever left out", "Refresh to stay current", "No card needed"],
-    cta: "Start free",
-    recommended: false,
-  },
-  {
-    name: PAID_NAME,
-    price: PAID_PRICE,
-    blurb: "For students who want more.",
-    features: PAID_FEATURES,
-    cta: "Level up my grades",
-    recommended: true,
-  },
+const FEATURES = [
+  "One calm daily plan from Canvas",
+  "Nothing due ever left out",
+  "Refresh anytime to stay current",
+  "Change your hours or dates whenever",
 ];
 
 export function Pricing() {
@@ -45,55 +29,43 @@ export function Pricing() {
           as="h1"
           eyebrow="Pricing"
           title="Simple pricing"
-          subtitle="Start free. Upgrade when you want more."
+          subtitle="Try it free for 7 days. Keep it for less than a coffee a month."
         />
 
-        <div className="mx-auto mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
-          {TIERS.map((tier, i) => (
-            <Reveal key={tier.name} delay={i * 0.1}>
-              <div
-                className={cn(
-                  "flex h-full flex-col rounded-2xl border bg-surface p-6 sm:p-8",
-                  tier.recommended
-                    ? "relative border-accent-ring shadow-md ring-1 ring-accent-ring/40"
-                    : "border-line-subtle shadow-card"
-                )}
-              >
-                {tier.recommended && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-on shadow-card">
-                    Recommended
-                  </span>
-                )}
-                <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">{tier.name}</h3>
-                <p className="mt-3 flex items-end gap-1">
-                  <span className="text-4xl font-semibold tracking-tight text-ink">{tier.price}</span>
-                  <span className="pb-1 text-sm text-muted">/mo</span>
-                </p>
-                <p className="mt-2 text-[15px] leading-relaxed text-muted">{tier.blurb}</p>
-                <ul className="mt-5 space-y-2.5">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-[15px] text-ink">
-                      <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-7">
-                  <ButtonLink
-                    href={site.signupUrl}
-                    variant={tier.recommended ? "primary" : "secondary"}
-                    size="lg"
-                    className="w-full"
-                  >
-                    {tier.cta}
-                  </ButtonLink>
-                </div>
+        <div className="mx-auto mt-12 max-w-md">
+          <Reveal>
+            <div className="relative flex flex-col rounded-2xl border border-accent-ring bg-surface p-6 shadow-md ring-1 ring-accent-ring/40 sm:p-8">
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-accent px-3 py-1 text-xs font-semibold text-accent-on shadow-card">
+                7-day free trial
+              </span>
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-muted">Navo</h3>
+              <p className="mt-3 flex items-end gap-1">
+                <span className="text-4xl font-semibold tracking-tight text-ink">{PAID_PRICE}</span>
+                <span className="pb-1 text-sm text-muted">/mo</span>
+              </p>
+              <p className="mt-2 text-[15px] leading-relaxed text-muted">
+                Free for 7 days, then {PAID_PRICE}/mo. Cancel anytime.
+              </p>
+              <ul className="mt-5 space-y-2.5">
+                {FEATURES.map((f) => (
+                  <li key={f} className="flex items-start gap-2.5 text-[15px] text-ink">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-success" />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto pt-7">
+                <ButtonLink href={site.signupUrl} variant="primary" size="lg" className="w-full">
+                  {site.primaryCta}
+                </ButtonLink>
               </div>
-            </Reveal>
-          ))}
+            </div>
+          </Reveal>
         </div>
 
-        <p className="mt-6 text-center text-sm text-muted">No card needed to start.</p>
+        <p className="mt-6 text-center text-sm text-muted">
+          Your card is charged after 7 days. Cancel anytime before then and you won&rsquo;t be billed.
+        </p>
       </div>
     </section>
   );

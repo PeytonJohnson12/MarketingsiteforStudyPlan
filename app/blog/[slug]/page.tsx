@@ -78,7 +78,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
         <div className="mt-12 rounded-2xl border border-accent-ring/40 bg-surface p-6 text-center shadow-card">
           <p className="text-base font-semibold text-ink">Let Navo build your week for you.</p>
-          <p className="mt-1.5 text-sm text-muted">{site.catchphrase} Free to start.</p>
+          <p className="mt-1.5 text-sm text-muted">{site.catchphrase} Free for 7 days.</p>
           <ButtonLink href={site.signupUrl} variant="primary" size="md" className="mt-4">
             {site.primaryCta}
           </ButtonLink>

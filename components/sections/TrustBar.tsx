@@ -3,7 +3,7 @@ import { Reveal } from "@/components/ui/reveal";
 
 const PILLARS = [
   { icon: GraduationCap, label: "Works with any Canvas school" },
-  { icon: CreditCard, label: "Free to start · No card needed" },
+  { icon: CreditCard, label: "Free for 7 days · Cancel anytime" },
 ];
 
 export function TrustBar() {
