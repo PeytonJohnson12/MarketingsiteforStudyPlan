@@ -11,22 +11,24 @@ export function isValidEmail(email: string): boolean {
 
 export type SubscribeResult =
   | { ok: true }
-  | { ok: false; reason: "invalid" | "not_configured" | "network" };
+  | { ok: false; reason: "invalid" | "not_configured" | "network" | "rate_limited" };
 
-/** Subscribe an email to the founding-circle list. Pure of UI; returns a typed result. */
-export async function subscribeEarlyAccess(email: string): Promise<SubscribeResult> {
+/** Subscribe an email to the founding-circle list. Pure of UI; returns a typed result.
+ *  `hp` is the honeypot value (empty for real users; bots that autofill it get dropped). */
+export async function subscribeEarlyAccess(email: string, hp = ""): Promise<SubscribeResult> {
   const trimmed = email.trim();
   if (!isValidEmail(trimmed)) return { ok: false, reason: "invalid" };
   try {
     const res = await fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: trimmed }),
+      body: JSON.stringify({ email: trimmed, hp }),
     });
     if (res.ok) return { ok: true };
     // Surface the server's reason (e.g. not_configured) when it sends one.
     const data = (await res.json().catch(() => null)) as { reason?: string } | null;
     if (data?.reason === "not_configured") return { ok: false, reason: "not_configured" };
+    if (data?.reason === "rate_limited") return { ok: false, reason: "rate_limited" };
     if (data?.reason === "invalid") return { ok: false, reason: "invalid" };
     return { ok: false, reason: "network" };
   } catch {

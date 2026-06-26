@@ -23,6 +23,24 @@ const GUIDE_FILENAME = "The-Deadline-Proof-Week.pdf";
 // re-send the guide, or subscribers get it twice.
 const FOLLOWUP_EVENT = "study_guide.requested";
 
+// Best-effort per-IP throttle (in-memory → per serverless instance, not a shared
+// limiter; a speed-bump against scripted abuse, generous so a real user never
+// hits it). For production-grade limiting, back this with a shared store (Upstash).
+const RL_WINDOW_MS = 10 * 60_000;
+const RL_MAX = 8;
+const hits = new Map<string, { count: number; resetAt: number }>();
+function rateLimited(ip: string): boolean {
+  const now = Date.now();
+  if (hits.size > 5000) for (const [k, v] of hits) if (now > v.resetAt) hits.delete(k);
+  const e = hits.get(ip);
+  if (!e || now > e.resetAt) {
+    hits.set(ip, { count: 1, resetAt: now + RL_WINDOW_MS });
+    return false;
+  }
+  e.count += 1;
+  return e.count > RL_MAX;
+}
+
 function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -41,16 +59,27 @@ function welcomeHtml(): string {
 }
 
 export async function POST(req: Request) {
-  if (!apiKey || !audienceId || !from) {
-    return NextResponse.json({ ok: false, reason: "not_configured" }, { status: 503 });
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  if (rateLimited(ip)) {
+    return NextResponse.json({ ok: false, reason: "rate_limited" }, { status: 429 });
   }
 
   let email = "";
+  let hp = "";
   try {
-    const body = (await req.json()) as { email?: unknown };
+    const body = (await req.json()) as { email?: unknown; hp?: unknown };
     if (typeof body.email === "string") email = body.email.trim();
+    if (typeof body.hp === "string") hp = body.hp;
   } catch {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });
+  }
+  // Honeypot: a hidden field real users leave empty. Filled = bot — pretend
+  // success (so it can't tell it was caught) and do nothing.
+  if (hp.trim() !== "") {
+    return NextResponse.json({ ok: true });
+  }
+  if (!apiKey || !audienceId || !from) {
+    return NextResponse.json({ ok: false, reason: "not_configured" }, { status: 503 });
   }
   if (!isValidEmail(email)) {
     return NextResponse.json({ ok: false, reason: "invalid" }, { status: 400 });

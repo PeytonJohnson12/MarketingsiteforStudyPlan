@@ -14,13 +14,14 @@ export function EarlyAccess() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
-  async function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === "submitting") return;
+    const hp = String(new FormData(e.currentTarget).get("hp") || "");
     setStatus("submitting");
     setMessage("");
 
-    const result = await subscribeEarlyAccess(email);
+    const result = await subscribeEarlyAccess(email, hp);
     if (result.ok) {
       trackEarlyAccessSignup();
       setStatus("success");
@@ -32,7 +33,9 @@ export function EarlyAccess() {
         ? "That doesn't look like a valid email."
         : result.reason === "not_configured"
           ? "Sign-ups aren't switched on yet — check back soon."
-          : "Something went wrong. Please try again."
+          : result.reason === "rate_limited"
+            ? "Too many tries — please wait a few minutes."
+            : "Something went wrong. Please try again."
     );
   }
 
@@ -58,6 +61,8 @@ export function EarlyAccess() {
             </Reveal>
           ) : (
             <form onSubmit={onSubmit} className="mx-auto mt-8 max-w-md" noValidate>
+              {/* honeypot — off-screen + aria-hidden; real users never fill it, bots that autofill get dropped */}
+              <input type="text" name="hp" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] top-0 h-0 w-0 opacity-0" />
               <div className="flex flex-col gap-3 sm:flex-row">
                 <label htmlFor="early-access-email" className="sr-only">
                   Email address
