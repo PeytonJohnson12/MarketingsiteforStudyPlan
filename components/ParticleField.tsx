@@ -4,8 +4,9 @@ import { useEffect, useRef } from "react";
 
 /**
  * Subtle "productivity network" canvas: slow-drifting nodes with connecting
- * lines. Performance-minded: capped node count, DPR-aware, pauses when the tab
- * is hidden, and renders nothing for users who prefer reduced motion.
+ * lines. Performance-minded: capped node count, DPR-aware, a deferred start (so
+ * it never competes with hydration / first paint), pauses when the tab is hidden
+ * OR the hero scrolls out of view, and renders nothing under reduced motion.
  */
 export function ParticleField({ className }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
@@ -19,8 +20,11 @@ export function ParticleField({ className }: { className?: string }) {
     if (!ctx) return;
 
     const ACCENT = "124, 92, 240";
-    let w = 0, h = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let w = 0, h = 0;
     let raf = 0;
+    let inView = true;
+    let ready = false;
     let nodes: { x: number; y: number; vx: number; vy: number }[] = [];
 
     const resize = () => {
@@ -39,7 +43,9 @@ export function ParticleField({ className }: { className?: string }) {
         vx: (Math.random() - 0.5) * 0.25,
         vy: (Math.random() - 0.5) * 0.25,
       }));
-    }
+    };
+
+    const isRunning = () => ready && inView && !document.hidden;
 
     const frame = () => {
       ctx.clearRect(0, 0, w, h);
@@ -48,7 +54,6 @@ export function ParticleField({ className }: { className?: string }) {
         if (n.x < 0 || n.x > w) n.vx *= -1;
         if (n.y < 0 || n.y > h) n.vy *= -1;
       }
-      // connections
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const a = nodes[i], b = nodes[j];
@@ -64,28 +69,41 @@ export function ParticleField({ className }: { className?: string }) {
           }
         }
       }
-      // nodes
       for (const n of nodes) {
         ctx.fillStyle = `rgba(${ACCENT}, 0.45)`;
         ctx.beginPath();
         ctx.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
         ctx.fill();
       }
-      raf = requestAnimationFrame(frame);
-    }
+      if (isRunning()) raf = requestAnimationFrame(frame);
+    };
 
-    const start = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); };
-    const stop = () => { cancelAnimationFrame(raf); };
-    const onVisibility = () => { (document.hidden ? stop : start)(); };
+    const sync = () => {
+      cancelAnimationFrame(raf);
+      if (isRunning()) raf = requestAnimationFrame(frame);
+    };
 
     resize();
-    start();
+
+    // Pause when the hero scrolls out of view — no point animating off-screen.
+    const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync(); }, { threshold: 0 });
+    io.observe(canvas);
+    const onVisibility = () => sync();
     window.addEventListener("resize", resize);
     document.addEventListener("visibilitychange", onVisibility);
+
+    // Defer the first start so it never competes with hydration / first paint.
+    const begin = () => { ready = true; sync(); };
+    const idle = typeof window.requestIdleCallback === "function";
+    const startId = idle ? window.requestIdleCallback(begin, { timeout: 1500 }) : window.setTimeout(begin, 700);
+
     return () => {
-      stop();
+      cancelAnimationFrame(raf);
+      io.disconnect();
       window.removeEventListener("resize", resize);
       document.removeEventListener("visibilitychange", onVisibility);
+      if (idle) window.cancelIdleCallback(startId);
+      else clearTimeout(startId);
     };
   }, []);
 

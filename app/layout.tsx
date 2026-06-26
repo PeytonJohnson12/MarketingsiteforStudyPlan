@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     description: site.description,
   },
   robots: { index: true, follow: true },
+  // Google Search Console: set GOOGLE_SITE_VERIFICATION (env) to your token to
+  // emit the verification meta tag. Omitted when the env var is unset.
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 export const viewport: Viewport = {
