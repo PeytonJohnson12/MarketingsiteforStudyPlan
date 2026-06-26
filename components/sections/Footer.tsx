@@ -6,7 +6,9 @@ const COLUMNS = [
   { title: "Product", links: [
     { label: "How it works", href: "/#how-it-works" },
     { label: "Features", href: "/#features" },
+    { label: "Demo", href: "/demo" },
     { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/faq" },
   ]},
   { title: "Get started", links: [
@@ -42,6 +44,7 @@ export function Footer() {
           <p className="text-sm text-faint">© {new Date().getFullYear()} Navo. All rights reserved.</p>
           <div className="flex items-center gap-4 text-sm text-faint">
             <a href="/terms" className="transition-colors hover:text-ink">Terms</a>
+            <a href="/privacy" className="transition-colors hover:text-ink">Privacy</a>
             <span>Made for students juggling deadlines.</span>
           </div>
         </div>

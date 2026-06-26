@@ -12,7 +12,7 @@
   --surface-soft: 244 244 245;
   --ink: 22 22 25;            /* #161619 */
   --muted: 78 78 87;          /* #4e4e57 */
-  --faint: 142 142 152;       /* #8e8e98 */
+  --faint: 108 108 118;       /* #6c6c76 — darkened so small text meets WCAG AA (4.5:1) */
   --line: 214 214 218;        /* #d6d6da */
   --line-subtle: 232 232 234; /* #e8e8ea */
 
