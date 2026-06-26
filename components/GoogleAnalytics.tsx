@@ -16,6 +16,9 @@ export function GoogleAnalytics() {
       <Script id="ga-init" strategy="afterInteractive">
         {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+// Consent Mode v2: deny storage until the visitor accepts (the CookieConsent
+// banner flips analytics_storage to 'granted'). No ads, so ad_* stay denied.
+gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500 });
 gtag('js', new Date());
 gtag('config', '${site.gaId}');`}
       </Script>
