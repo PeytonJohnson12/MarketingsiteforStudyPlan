@@ -7,14 +7,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: site.url, lastModified, changeFrequency: "monthly", priority: 1 },
     { url: `${site.url}/pricing`, lastModified, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${site.url}/demo`, lastModified, changeFrequency: "monthly", priority: 0.6 },
     { url: `${site.url}/blog`, lastModified, changeFrequency: "weekly", priority: 0.7 },
     { url: `${site.url}/faq`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     ...posts.map((post) => ({
       url: `${site.url}/blog/${post.slug}`,
-      lastModified,
+      lastModified: new Date(post.date),
       changeFrequency: "monthly" as const,
       priority: 0.6,
     })),
     { url: `${site.url}/terms`, lastModified, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${site.url}/privacy`, lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];
 }
