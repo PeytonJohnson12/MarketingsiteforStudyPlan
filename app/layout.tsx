@@ -59,7 +59,7 @@ const jsonLd = {
       operatingSystem: "Web",
       description:
         "Navo is the Canvas study planner that never misses what's due — it reads your Canvas assignments and builds one calm daily plan.",
-      offers: { "@type": "Offer", price: "4.00", priceCurrency: "USD" },
+      offers: { "@type": "Offer", price: "5.99", priceCurrency: "USD" },
       url: site.url,
       publisher: { "@id": `${site.url}/#org` },
     },

@@ -31,7 +31,6 @@ export default function DemoPage() {
             />
           </div>
         </div>
-        <p className="mt-3 text-center text-sm text-faint">A short, looping product tour — no sound needed.</p>
       </div>
 
       <div className="mx-auto mt-12 max-w-3xl">

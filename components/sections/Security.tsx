@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { Constellation } from "@/components/Decor";
 
 const POINTS = [
-  { icon: ShieldCheck, title: "Nothing due can be left out", body: "Our planner is built so a due assignment always makes your plan. Every time." },
+  { icon: ShieldCheck, title: "Nothing due can be left out", body: "If it's due in Canvas, it's in your plan — every assignment, every time." },
   { icon: Lock, title: "Your data stays yours", body: "We read only your coursework to build your plan. We never sell it. We never post to Canvas." },
   { icon: EyeOff, title: "Read-only access", body: "Navo reads your work and due dates. It can't turn in, delete, or change anything." },
   { icon: RefreshCw, title: "Fresh when you refresh", body: "Hit refresh and your plan catches up. New work and date changes come in from Canvas." },

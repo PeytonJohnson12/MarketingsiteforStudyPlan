@@ -6,12 +6,12 @@ import { Constellation } from "@/components/Decor";
 import { site } from "@/lib/site";
 
 /*
- * ⚠️ PLACEHOLDER PRICE — set PAID_PRICE to your real monthly price before
- * publishing (it drives the card display + the trial line). Keep
- * app/layout.tsx JSON-LD `offers.price` in sync. The card is collected at
- * signup; the student is charged after the 7-day free trial.
+ * Pricing: one paid plan, billed monthly or yearly. Keep app/layout.tsx JSON-LD
+ * `offers.price` in sync if you change these. The card is collected at signup;
+ * the student is charged after the 7-day free trial.
  */
-const PAID_PRICE = "$4"; // [SET PRICE] placeholder
+const PAID_PRICE = "$5.99";
+const PAID_ANNUAL = "$49";
 
 const FEATURES = [
   "One calm daily plan from Canvas",
@@ -43,8 +43,9 @@ export function Pricing() {
                 <span className="text-4xl font-semibold tracking-tight text-ink">{PAID_PRICE}</span>
                 <span className="pb-1 text-sm text-muted">/mo</span>
               </p>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">
-                Free for 7 days, then {PAID_PRICE}/mo. Cancel anytime.
+              <p className="mt-1.5 text-sm font-medium text-accent">or {PAID_ANNUAL}/year — save about 30%</p>
+              <p className="mt-3 text-[15px] leading-relaxed text-muted">
+                Free for 7 days, then {PAID_PRICE}/mo (or {PAID_ANNUAL}/year). Cancel anytime.
               </p>
               <ul className="mt-5 space-y-2.5">
                 {FEATURES.map((f) => (

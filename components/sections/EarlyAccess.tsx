@@ -48,7 +48,7 @@ export function EarlyAccess() {
             Get a free study plan.
           </h2>
           <p className="mt-4 text-pretty text-lg leading-relaxed text-muted">
-            Drop your email and we&rsquo;ll send you a ready-to-use weekly study plan — free. Plus you&rsquo;re first in line when Navo opens.
+            Drop your email and we&rsquo;ll send you a ready-to-use weekly study plan — free.
           </p>
 
           {status === "success" ? (
